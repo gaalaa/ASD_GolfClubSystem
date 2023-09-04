@@ -1,4 +1,4 @@
-package com.golfclub.golfclubsystem
+package com.golfclub.golfclubsystem.controllers
 
 import jakarta.servlet.annotation.WebServlet
 import jakarta.servlet.http.HttpServlet

@@ -1,4 +1,4 @@
-package com.golfclub.golfclubsystem;
+package com.golfclub.golfclubsystem.controllers;
 
 import java.io.*;
 
