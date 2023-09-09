@@ -1,0 +1,45 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Peter de Vroom
+  Date: 9/09/2023
+  Time: 9:50 am
+--%>
+<%@ page import="com.golfclub.golfclubsystem.models.Member" %>
+
+<% Member currentUser = (Member) session.getAttribute("currentUser"); %>
+
+<header class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-md-between py-3 mb-4 border-bottom">
+        <div class="col-md-3 mb-2 mb-md-0">
+            <a href="/" class="d-inline-flex">
+                <span>ASD Golf Club</span>
+            </a>
+        </div>
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <li>
+                <a href="${pageContext.request.contextPath}/" class="nav-link px-2 ${pageContext.request.requestURI eq '/WEB-INF/index.jsp' ? 'link-secondary' : ''}">Home</a>
+            </li>
+            <% if (currentUser != null && currentUser.isAdmin()) { %>
+            <li>
+                <a href="${pageContext.request.contextPath}/admin" class="nav-link px-2 ${pageContext.request.requestURI eq '/WEB-INF/admin-dashboard.jsp' ? 'link-secondary' : ''}">Admin Dashboard</a>
+            </li>
+            <% } %>
+        </ul>
+        <div class="col-md-3 text-end">
+        <% if (currentUser == null) { %>
+            <button type="button" class="btn btn-outline-primary me-2">Sign In</button>
+            <button type="button" class="btn btn-primary">Sign Up</button>
+        <% } else { %>
+            <span class="me-2">Hi, <%= currentUser.getFullName() %>!</span>
+            <button type="button" class="btn btn-outline-primary" onclick="">Sign Out</button>
+        <% } %>
+        </div>
+    </div>
+</header>
+
+<script>
+    function signOut() {
+
+    }
+</script>
+
