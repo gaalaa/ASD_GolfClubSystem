@@ -1,0 +1,23 @@
+.sidenav {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    width: 280px;
+    position: fixed;
+    height: 100%;
+}
+
+.content {
+    margin-left: 300px;
+    padding-right: 150px;
+}
+
+@media (max-width: 1000px) {
+    .sidenav {
+        width: 100px;
+    }
+
+    .content {
+        margin-left: 120px;
+    }
+}

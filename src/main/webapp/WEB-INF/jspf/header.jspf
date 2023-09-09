@@ -5,8 +5,9 @@
   Time: 9:50 am
 --%>
 <%@ page import="com.golfclub.golfclubsystem.models.Member" %>
+<%@ page import="com.golfclub.golfclubsystem.Attributes" %>
 
-<% Member currentUser = (Member) session.getAttribute("currentUser"); %>
+<% Member currentUser = (Member) session.getAttribute(Attributes.User); %>
 
 <header class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-md-between py-3 mb-4 border-bottom">
@@ -21,7 +22,7 @@
             </li>
             <% if (currentUser != null && currentUser.isAdmin()) { %>
             <li>
-                <a href="${pageContext.request.contextPath}/admin" class="nav-link px-2 ${pageContext.request.requestURI eq '/WEB-INF/admin-dashboard.jsp' ? 'link-secondary' : ''}">Admin Dashboard</a>
+                <a href="${pageContext.request.contextPath}/admin" class="nav-link px-2 ${pageContext.request.requestURI eq '/WEB-INF/admin-dashboard-users.jsp' ? 'link-secondary' : ''}">Admin Dashboard</a>
             </li>
             <% } %>
         </ul>

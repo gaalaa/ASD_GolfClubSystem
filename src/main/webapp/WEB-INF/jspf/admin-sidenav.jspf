@@ -1,0 +1,16 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Peter de Vroom
+  Date: 9/09/2023
+  Time: 3:10 pm
+--%>
+<nav class="sidenav">
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+            <a class="nav-link active">Users</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link">Products</a>
+        </li>
+    </ul>
+</nav>
