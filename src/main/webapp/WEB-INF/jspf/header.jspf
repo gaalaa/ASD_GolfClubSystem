@@ -31,15 +31,11 @@
             <button type="button" class="btn btn-primary">Sign Up</button>
         <% } else { %>
             <span class="me-2">Hi, <%= currentUser.getFullName() %>!</span>
-            <button type="button" class="btn btn-outline-primary" onclick="">Sign Out</button>
+            <form class="d-inline" method="post" action="${pageContext.request.contextPath}/member/logout">
+                <input type="submit" class="btn btn-outline-primary" value="Sign Out">
+            </form>
         <% } %>
         </div>
     </div>
 </header>
-
-<script>
-    function signOut() {
-
-    }
-</script>
 
