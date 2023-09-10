@@ -8,28 +8,26 @@ import jakarta.servlet.http.HttpServlet
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 
-@WebServlet("/admin")
-class AdminServlet : HttpServlet() {
-
+@WebServlet("/admin/members")
+class AdminMemberServlet : HttpServlet() {
     override fun doGet(req: HttpServletRequest, resp: HttpServletResponse) {
         val session = req.session
-//        val currentUser = session.getAttribute(Attributes.User) as Member?
 
         val dao = MemberDao()
-        // Just for testing so I don't have to sign in.
-        val currentUser = dao.get(1).get()
-        session.setAttribute(Attributes.User, currentUser)
+        val currentUser = session.getAttribute(Attributes.User) as Member?
 
         if (currentUser != null) {
             if (currentUser.isAdmin) {
-                // Forward to users dashboard by default
-                val dispatcher = req.getRequestDispatcher("/admin/members")
+                val allMembers = dao.getAll()
+                req.setAttribute("members", allMembers)
+
+                val dispatcher = req.getRequestDispatcher("/WEB-INF/admin-dashboard-users.jsp")
                 dispatcher.forward(req, resp)
             } else {
                 resp.status = 403 // Forbidden
             }
         } else {
-            resp.sendRedirect("/member/login");
+            resp.sendRedirect("/")
         }
     }
 }
