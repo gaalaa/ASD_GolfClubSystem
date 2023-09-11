@@ -27,7 +27,7 @@
 
         <div class="mt-2 ml-0 ps-0">
             <% for (Member member : members) { %>
-                <div id="<%= member.getFullName().toLowerCase() %>" class="card mb-2">
+                <div data-asd-name="<%= member.getFullName().toLowerCase() %>" data-asd-id="<%= member.getId() %>" class="card mb-2">
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <div class="d-flex">
                             <div>
@@ -88,7 +88,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" form="editMemberForm" class="btn btn-primary" onclick="onDeleteModalConfirmClicked()">Save Changes</button>
+                        <button type="submit" form="editMemberForm" class="btn btn-primary">Save Changes</button>
                     </div>
                 </div>
             </div>
@@ -108,7 +108,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary" onclick="onDeleteModalConfirmClicked()">Delete</button>
+                        <button type="button" id="confirmDeleteButton" class="btn btn-primary" onclick="onDeleteModalConfirmClicked()">Delete</button>
                     </div>
                 </div>
             </div>
@@ -116,9 +116,12 @@
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.bundle.min.js"></script>
 <script>
-    let userCards = document.querySelectorAll('.card');
+    // Note(Pete): The data-asd-* attributes are custom in order to hydrate the page to feel interactive.
+
+    let memberCards = document.querySelectorAll('[data-asd-name]');
     const editModal = new bootstrap.Modal(document.querySelector('#edit-modal'), {});
     const deleteModal = new bootstrap.Modal(document.querySelector('#delete-modal'), {});
+    const confirmDeleteButton = document.querySelector('#confirmDeleteButton');
 
     /**
      * Filters through users by their full name
@@ -126,8 +129,8 @@
      */
     function onSearchChanged(value) {
         const query = value.toLowerCase();
-        for (const card of userCards) {
-            card.hidden = !card.id.includes(query);
+        for (const card of memberCards) {
+            card.hidden = !card.attributes['data-asd-name'].nodeValue.includes(query);
         }
     }
 
@@ -136,12 +139,14 @@
      * @param {Number} id
      */
     async function onEditClicked(id) {
-        const response = await fetch('${pageContext.request.contextPath}/admin/member/edit?memberId=' + id);
+        // Note(Pete): The funky escaped interpolator (\${}) is because the JSP Expression Language interferes
+        // with the JS syntax.
+        const response = await fetch(`${pageContext.request.contextPath}/admin/member/edit?memberId=\${id}`);
         if (response.status !== 200) {
             console.error(response.status, response.statusText);
         }
 
-        const data = (await response.json()).value;
+        const data = (await response.json());
         console.log(response, data);
 
         document.querySelector('#idEdit').value = id;
@@ -150,7 +155,6 @@
         document.querySelector('#emailEdit').value = data.email;
 
         editModal.show();
-
     }
 
     /**
@@ -159,10 +163,20 @@
      */
     function onDeleteClicked(id) {
         deleteModal.show();
-    }
 
-    function onDeleteModalConfirmClicked() {
-        deleteModal.hide();
+        // Give the confirm delete button a function that will delete the correct member when clicked.
+        confirmDeleteButton.onclick = async () => {
+            const response = await fetch(`${pageContext.request.contextPath}/admin/member/edit?memberId=\${id}`, {
+                method: 'DELETE',
+            });
+
+            if (response.status === 200) {
+                const member = document.querySelector(`[data-asd-id="\${id}"]`);
+                member.remove();
+            }
+
+            deleteModal.hide();
+        };
     }
 </script>
 </html>
