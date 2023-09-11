@@ -21,7 +21,7 @@ class AdminMemberServlet : HttpServlet() {
                 val allMembers = dao.getAll()
                 req.setAttribute("members", allMembers)
 
-                val dispatcher = req.getRequestDispatcher("/WEB-INF/admin-dashboard-users.jsp")
+                val dispatcher = req.getRequestDispatcher("/WEB-INF/admin-dashboard-members.jsp")
                 dispatcher.forward(req, resp)
             } else {
                 resp.status = 403 // Forbidden
