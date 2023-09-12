@@ -25,7 +25,6 @@
     </servlet-mapping>
 
 
-
     <listener>
         <listener-class>com.golfclub.golfclubsystem.dataContext.DBManager</listener-class>
     </listener>
