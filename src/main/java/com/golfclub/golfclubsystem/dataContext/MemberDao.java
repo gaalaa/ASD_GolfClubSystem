@@ -103,8 +103,20 @@ public class MemberDao implements IDao<Member> {
     }
 
     @Override
-    public void delete(Member entity) {
+    public boolean delete(Member entity) {
 
+        return false;
+    }
+
+    @Override
+    public boolean delete(int id) throws SQLException {
+        try (PreparedStatement statement = connection.prepareStatement("DELETE FROM Member WHERE id = ?")) {
+            statement.setInt(1, id);
+            int result = statement.executeUpdate();
+
+            // Note(Pete): The delete should have removed 1 or 0 rows. If the result is 1, return true for success.
+            return result == 1;
+        }
     }
 
     @Override
