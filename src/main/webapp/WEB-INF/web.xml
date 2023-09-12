@@ -6,11 +6,25 @@
     <welcome-file-list>
         <welcome-file>index</welcome-file>
     </welcome-file-list>
-    
+
     <servlet-mapping>
         <servlet-name>helloServlet</servlet-name>
         <url-pattern/>
     </servlet-mapping>
+
+
+
+    <!-- Kevin -->
+    <!--servlet>
+        <servlet-name>courseInfoServlet</servlet-name>
+        <servlet-class>com.golfclub.golfclubsystem.controllers.member.courseInfoServlet</servlet-class>
+    </servlet-->
+    <servlet-mapping>
+        <servlet-name>courseInfoServlet</servlet-name>
+        <url-pattern>/courseInfo</url-pattern>
+    </servlet-mapping>
+
+
 
     <listener>
         <listener-class>com.golfclub.golfclubsystem.dataContext.DBManager</listener-class>
