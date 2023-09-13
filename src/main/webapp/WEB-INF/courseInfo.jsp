@@ -8,11 +8,10 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/slideshow.css">
     <title>Course Information Page</title>
 </head>
-<body>
-<h1><%= "COURSE INFO" %>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/courseInfo.css">
+<h1 class="h1"><%= "COURSE INFO" %>
 </h1>
-
-
+<body>
 
 
 <div class="w3-content w3-display-container">
@@ -44,6 +43,12 @@
         x[slideIndex-1].style.display = "block";
     }
 </script>
+
+<h3 class="h3">ASD Golf Club</h3>
+<h5 class="h5">81 Broadway, Ultimo NSW 2007</h5>
+
+
+
 
 </body>
 </html>

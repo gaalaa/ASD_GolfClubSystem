@@ -21,7 +21,7 @@
     </servlet-->
     <servlet-mapping>
         <servlet-name>courseInfoServlet</servlet-name>
-        <url-pattern>/courseInfo</url-pattern>
+        <url-pattern>/course-info</url-pattern>
     </servlet-mapping>
 
 

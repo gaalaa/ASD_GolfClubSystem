@@ -11,6 +11,7 @@
 
 <header class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-md-between py-3 mb-4 border-bottom">
+        <img src="${pageContext.request.contextPath}/img/logo.png" alt="Logo" height="100" width="100">
         <div class="col-md-3 mb-2 mb-md-0">
             <a href="/" class="d-inline-flex">
                 <span>ASD Golf Club</span>
@@ -28,7 +29,7 @@
         </ul>
 
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="${pageContext.request.contextPath}/courseInfo">Course Info</a>
+            <li><a href="${pageContext.request.contextPath}/course-info">Course Info</a>
             </li>
         </ul>
 
