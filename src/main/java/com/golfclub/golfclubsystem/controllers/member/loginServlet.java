@@ -8,7 +8,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 
 @WebServlet("/member/login")
@@ -19,25 +18,16 @@ public class loginServlet extends HttpServlet {
         dispatcher.forward(req, resp);
     }
 
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //handle setting session user to user that logged in
-
         String userName = req.getParameter("username");
-
         String password = req.getParameter("password");
-
         //see if user exists in db
         if(userName.equals("test") && password.equals("123")){
-
             Member member = new Member(123, "test", "member", "test.member@gmail.com", false);
             req.getSession().setAttribute(Attributes.User, member);
-
-
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/courseInfo.jsp");
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/homepage.jsp");
             dispatcher.forward(req, resp);
-
         }
         else{
             req.setAttribute("loginError", "Invalid Credentials");
