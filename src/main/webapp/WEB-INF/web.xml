@@ -24,6 +24,10 @@
         <url-pattern>/course-info</url-pattern>
     </servlet-mapping>
 
+    <servlet-mapping>
+        <servlet-name>homepageServlet</servlet-name>
+        <url-pattern>/homepage</url-pattern>
+    </servlet-mapping>
 
     <listener>
         <listener-class>com.golfclub.golfclubsystem.dataContext.DBManager</listener-class>

@@ -33,6 +33,11 @@
             </li>
         </ul>
 
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="${pageContext.request.contextPath}/homepage">Home Page</a>
+            </li>
+        </ul>
+
         <div class="col-md-3 text-end">
         <% if (currentUser == null) { %>
             <form class="d-inline" method="get" action="${pageContext.request.contextPath}/member/login">
