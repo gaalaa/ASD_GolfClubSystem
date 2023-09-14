@@ -2,8 +2,10 @@
 <head>
     <title>Sign Up</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/userRegistration.css"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.css"/>
 </head>
 <body>
+<%@ include file="jspf/header.jspf" %>
 <form action="${pageContext.request.contextPath}/member/userRegistration" method="post" onsubmit="return validateInput()">
     <div class="form-row">
         <label for="firstName">First Name:</label>
