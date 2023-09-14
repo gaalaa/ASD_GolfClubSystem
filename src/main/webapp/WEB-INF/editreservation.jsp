@@ -11,7 +11,7 @@
 		<li><a href="courseInfo.jsp">Golf Courses</a></li>
 		<li><a href="contact.jsp">Contact Us</a></li>
 		<li><a href="index.jsp">Index</a></li>
-		<li><a href="home.jsp">Home</a></li>
+		<li><a href="homepage.jsp">Home</a></li>
 	</ul>
 </nav>
 <h1></h1>
