@@ -10,17 +10,47 @@
     text-align: center;
 }
 
-.myDiv {
+.div_container {
+    width: 100%;
     margin: auto;
-    width: 50%;
     padding: 5px;
 }
 
-.underline {
+.div_sidebar {
+    width: 15%;
+    position: sticky;
+    top: 0;
+    float: left;
+    margin-top: 25px;
+    padding-top: 30px;
+    padding-left: 5px;
+    margin-left: 2%;
+}
+
+.div_sidebar a {
+    padding: 8px;
+    font-size: 15px;
+    display: block;
+}
+
+.div_one {
+    width: 60%;
+    padding: 5px;
+    margin-left: 21%;
+}
+
+.underline1 {
     text-align: left;
     width: 300px;
     border-bottom: 2px solid #4CAF50;
     padding-bottom: 3px;
+}
+
+.underline2 {
+    text-align: left;
+    width: 160px;
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 1px;
 }
 
 .bolded {
@@ -37,8 +67,13 @@ td, th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
+    width: 33%;
 }
 
 tr:nth-child(even) {
     background-color: #dddddd;
+}
+
+body {
+    padding-bottom: 300px;
 }
