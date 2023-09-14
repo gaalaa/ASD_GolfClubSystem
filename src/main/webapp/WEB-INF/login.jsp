@@ -11,9 +11,14 @@
         <input type="text" id="password" name="password" required><br><br>
         <input type="submit" value="Login">
     </form>
-    <c:if test="${not empty requestScope.loginError}">
-        <p style="color: red">${requestScope.loginError}</p>
-    </c:if>
-    <c:remove var="loginError" scope="request"/>
+    <%
+        String loginError = (String) request.getAttribute("loginError");
+        if(loginError != null && !loginError.isEmpty()){
+    %>
+            <p style="color: red">Invalid Credentials</p>
+    <%
+            request.removeAttribute("loginError");
+        }
+    %>
 </body>
 </html>
