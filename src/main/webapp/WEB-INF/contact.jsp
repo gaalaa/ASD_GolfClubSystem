@@ -16,13 +16,7 @@
 <header>
   <h1>Contact Us</h1>
 </header>
-<nav>
-  <ul>
-    <li><a href="index.jsp">Index </a></li>
-    <li><a href="courseInfo.jsp">Golf Courses</a></li>
-    <li><a href="homepage.jsp">Home </a></li>
-  </ul>
-</nav>
+
 <section id="contact-section">
   <h2>Contact Information</h2>
   <p>If you have any questions or feedback, please feel free to contact us:</p>
