@@ -1,11 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
+
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.css"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/w3_slideshow.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/courseInfo.css">
 <%@ include file="jspf/header.jspf" %>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <head>
     <title>Course Information Page</title>
 </head>
@@ -27,8 +29,17 @@
     <h3 class="heading3">ASD Golf Club</h3>
     <h5 class="heading5">81 Broadway, Ultimo NSW 2007</h5>
 
-    <div class="myDiv">
-        <h1 class="underline">Play</h1>
+<div class="div_container">
+    <div class="div_sidebar">
+        <h3>In This Section</h3>
+        <a href="#play" class="active, underline2">Play</a>
+        <a href="#green-fees" class="active, underline2">Green Fees</a>
+        <a href="#hire-fees" class="active, underline2">Hire Fees</a>
+    </div>
+
+
+    <div class="div_one">
+        <h1 class="underline1" id="play">Play</h1>
         <p>
         ASD Golf Club is an 18 hole course in 81 Broadway, Ultimo NSW 2007, with a driving range and practice green
         tucked inside the oldest residential community in Ultimo. The course opened in 1974 and features 6,014 yards
@@ -45,12 +56,12 @@
         We have a full service pro shop with a complete section of golf merchandise. Clubs are available to rent in the
         pro shop.
         </p>
-    </div>
 
-    <div class="myDiv">
-        <h1 class="underline">Green Fees</h1>
+        <br />
+
+        <h1 class="underline1" id="green-fees">Green Fees</h1>
         <p><span class="bolded">Domestic Saturday, Sunday and Holiday Rates</span></p>
-        <table>
+        <table class="URLTable">
             <tr>
                 <th>Category</th>
                 <th>Times</th>
@@ -72,7 +83,7 @@
                 <td>$50</td>
             </tr>
         </table>
-        <p></p>
+        <br />
         <p><span class="bolded">Domestic Weekday (Monday-Friday) Rates</span></p>
         <table>
             <tr>
@@ -96,9 +107,39 @@
                 <td>$45</td>
             </tr>
         </table>
+
+        <br />
+
+        <h1 class="underline1" id="hire-fees">Hire Fees</h1>
+        <table>
+            <tr>
+                <th>Category</th>
+                <th>9 Holes</th>
+                <th>18 Holes</th>
+            </tr>
+            <tr>
+                <td>Electric Cart - Visitor</td>
+                <td>$32</td>
+                <td>$42</td>
+            </tr>
+            <tr>
+                <td>Electric Cart - Member</td>
+                <td>$22</td>
+                <td>$32</td>
+            </tr>
+            <tr>
+                <td>Standard Hire Set</td>
+                <td>$25</td>
+                <td>$35</td>
+            </tr>
+            <tr>
+                <td>Pull Buggy</td>
+                <td>$5 + $5 deposit</td>
+                <td>$10 + $5 deposit</td>
+            </tr>
+        </table>
     </div>
-
-
+</div>
 
 
     <script>
