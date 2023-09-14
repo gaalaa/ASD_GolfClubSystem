@@ -1,4 +1,3 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Login Page</title>
@@ -12,7 +11,7 @@
         <input type="text" id="password" name="password" required><br><br>
         <input type="submit" value="Login">
     </form>
-    <c:if test = "${not empty requestScope.loginError}">
+    <c:if test="${not empty requestScope.loginError}">
         <p style="color: red">${requestScope.loginError}</p>
     </c:if>
     <c:remove var="loginError" scope="request"/>
