@@ -1,6 +1,7 @@
 <html>
 <head>
     <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/login.css"/>
 </head>
 <body>
     <h1>Login</h1>
@@ -15,7 +16,7 @@
         String loginError = (String) request.getAttribute("loginError");
         if(loginError != null && !loginError.isEmpty()){
     %>
-            <p style="color: red">Invalid Credentials</p>
+            <p class="error-message"><%=loginError%></p>
     <%
             request.removeAttribute("loginError");
         }
