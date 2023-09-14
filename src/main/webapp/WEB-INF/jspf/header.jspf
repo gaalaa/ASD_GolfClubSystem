@@ -35,7 +35,9 @@
 
         <div class="col-md-3 text-end">
         <% if (currentUser == null) { %>
-            <button type="button" class="btn btn-outline-primary me-2">Sign In</button>
+            <form class="d-inline" method="get" action="${pageContext.request.contextPath}/member/login">
+                <input type="submit" class="btn btn-outline-primary me-2" value="Sign In">
+            </form>
             <button type="button" class="btn btn-primary">Sign Up</button>
         <% } else { %>
             <span class="me-2">Hi, <%= currentUser.getFullName() %>!</span>
