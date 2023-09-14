@@ -25,17 +25,17 @@ public class userRegistrationServlet extends HttpServlet {
         String lastName = req.getParameter("lastName");
         String email = req.getParameter("email");
         String password = req.getParameter("password");
-        int id = generateID();
-        Member member = new Member(id, firstName, lastName, email, false);
+        Member member = new Member();
+        member.setFirstName(firstName);
+        member.setLastName(lastName);
+        member.setEmail(email);
         member.setPassword(password);
+        member.setAdmin(false);
         req.getSession().setAttribute(Attributes.User, member);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/homepage.jsp");
         dispatcher.forward(req, resp);
 
 
     }
-    private int generateID(){
-        //+1 from last id in db??
-        return 123;
-    }
+
 }
