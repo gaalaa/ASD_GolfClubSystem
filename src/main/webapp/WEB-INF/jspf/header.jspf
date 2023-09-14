@@ -13,7 +13,7 @@
     <div class="d-flex flex-wrap align-items-center justify-content-md-between py-3 mb-4 border-bottom">
         <img src="${pageContext.request.contextPath}/img/logo.png" alt="Logo" height="100" width="100">
         <div class="col-md-3 mb-2 mb-md-0">
-            <a href="/" class="d-inline-flex">
+            <a href="${pageContext.request.contextPath}/" class="d-inline-flex">
                 <span>ASD Golf Club</span>
             </a>
         </div>
@@ -48,7 +48,9 @@
             <form class="d-inline" method="get" action="${pageContext.request.contextPath}/member/login">
                 <input type="submit" class="btn btn-outline-primary me-2" value="Sign In">
             </form>
-            <button type="button" class="btn btn-primary">Sign Up</button>
+            <form class="d-inline" method="get" action="${pageContext.request.contextPath}/member/userRegistration">
+                <input type="submit" class="btn btn-primary" value="Sign Up">
+            </form>
         <% } else { %>
             <span class="me-2">Hi, <%= currentUser.getFullName() %>!</span>
             <form class="d-inline" method="post" action="${pageContext.request.contextPath}/member/logout">
