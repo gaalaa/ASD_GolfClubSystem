@@ -24,10 +24,14 @@
             <li>
                 <a href="${pageContext.request.contextPath}/ContactServlet" class="nav-link px-2 ${pageContext.request.requestURI eq '/WEB-INF/contact.jsp' ? 'link-secondary' : ''}">Contact Us</a>
             </li>
+            <li>
+                <a href="${pageContext.request.contextPath}/ReservationServlet" class="nav-link px-2 ${pageContext.request.requestURI eq '/WEB-INF/reservation.jsp' ? 'link-secondary' : ''}">Make a Reservation</a>
+            </li>
             <% if (currentUser != null && currentUser.isAdmin()) { %>
             <li>
                 <a href="${pageContext.request.contextPath}/admin" class="nav-link px-2 ${pageContext.request.requestURI eq '/WEB-INF/admin-dashboard-members.jsp' ? 'link-secondary' : ''}">Admin Dashboard</a>
             </li>
+
             <% } %>
         </ul>
 
