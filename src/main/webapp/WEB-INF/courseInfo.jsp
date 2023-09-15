@@ -2,18 +2,16 @@
 <!DOCTYPE html>
 <html>
 
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.css"/>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/w3_slideshow.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/courseInfo.css">
-<%@ include file="jspf/header.jspf" %>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
 <head>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/w3_slideshow.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/courseInfo.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Course Information Page</title>
 </head>
 
-
 <body>
+    <%@ include file="jspf/header.jspf" %>
     <h1 class="heading1">Our Course</h1>
 
     <div class="w3-content w3-display-container">

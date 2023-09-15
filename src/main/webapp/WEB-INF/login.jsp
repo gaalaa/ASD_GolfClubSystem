@@ -2,8 +2,10 @@
 <head>
     <title>Login Page</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/login.css"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.css"/>
 </head>
 <body>
+    <%@ include file="jspf/header.jspf" %>
     <h1>Login</h1>
     <form action="${pageContext.request.contextPath}/member/login" method="post">
         <label for="username">Username: </label>

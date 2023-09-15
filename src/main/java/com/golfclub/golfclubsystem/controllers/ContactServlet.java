@@ -1,4 +1,4 @@
-package com.golfclub.golfclubsystem.controllers.member;
+package com.golfclub.golfclubsystem.controllers;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;

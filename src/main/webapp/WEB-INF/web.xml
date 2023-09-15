@@ -8,30 +8,8 @@
     </welcome-file-list>
 
     <servlet-mapping>
-        <servlet-name>helloServlet</servlet-name>
-        <url-pattern/>
-    </servlet-mapping>
-
-
-
-    <!-- Kevin -->
-    <!--servlet>
-        <servlet-name>courseInfoServlet</servlet-name>
-        <servlet-class>com.golfclub.golfclubsystem.controllers.member.courseInfoServlet</servlet-class>
-    </servlet-->
-    <servlet-mapping>
-        <servlet-name>courseInfoServlet</servlet-name>
-        <url-pattern>/course-info</url-pattern>
-    </servlet-mapping>
-
-    <servlet-mapping>
         <servlet-name>homepageServlet</servlet-name>
-        <url-pattern>/homepage</url-pattern>
-    </servlet-mapping>
-
-    <servlet-mapping>
-        <servlet-name>ContactServlet</servlet-name>
-        <url-pattern>/contact</url-pattern>
+        <url-pattern/>
     </servlet-mapping>
 
     <listener>
