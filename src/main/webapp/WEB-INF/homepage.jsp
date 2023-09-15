@@ -61,6 +61,7 @@
 <section>
   <h2>To book a course</h2>
   <p>Please sign in or sign up</p>
+  <img src="${pageContext.request.contextPath}/img/homepagegolf.png" alt="Booking Image" width="300">
 </section>
 
 </body>
