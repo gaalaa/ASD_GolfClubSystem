@@ -64,6 +64,7 @@ class AdminEditMemberServlet : HttpServlet() {
             this.firstName = req.getParameter("firstName")
             this.lastName = req.getParameter("lastName")
             this.email = req.getParameter("email")
+            this.isAdmin = req.getParameter("admin").toBoolean()
         }
 
         val memberDao = MemberDao()
