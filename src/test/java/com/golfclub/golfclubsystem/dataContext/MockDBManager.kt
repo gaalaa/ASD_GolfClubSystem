@@ -36,13 +36,10 @@ class MockDBManager {
                         isAdmin INTEGER NOT NULL
                     );
                     INSERT INTO Member (firstName, lastName, email, password, isAdmin)
-                        VALUES ('Admin', 'User', 'admin@golfclub.com', '1234', 1);
-                    INSERT INTO Member (firstName, lastName, email, password, isAdmin)
-                        VALUES ('Test', 'User', 'test@golfclub.com', '1234', 0);
-                    INSERT INTO Member (firstName, lastName, email, password, isAdmin)
-                        VALUES ('Member To', 'Update', 'update@golfclub.com', '1234', 0);
-                    INSERT INTO Member (firstName, lastName, email, password, isAdmin)
-                        VALUES ('Member To', 'Delete', 'delete@golfclub.com', '1234', 0);
+                        VALUES ('Admin', 'User', 'admin@golfclub.com', '1234', 1),
+                               ('Test', 'User', 'test@golfclub.com', '1234', 0),
+                               ('Member To', 'Update', 'update@golfclub.com', '1234', 0),
+                               ('Member To', 'Delete', 'delete@golfclub.com', '1234', 0);
                 """.trimIndent())
                 }
             } catch (e: Exception) {
