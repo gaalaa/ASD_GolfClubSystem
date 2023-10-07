@@ -100,7 +100,7 @@ public class MemberDao implements IDao<Member> {
     }
 
     @Override
-    public void update(Member entity) throws SQLException {
+    public void update(@NotNull Member entity) throws SQLException {
         // Note(Pete): This doesn't update the member's password.
         try (PreparedStatement statement = connection.prepareStatement(
                 "UPDATE Member SET firstName = ?, lastName = ?, email = ?, isAdmin = ? WHERE id = ?"
