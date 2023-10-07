@@ -7,7 +7,6 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class MemberDaoTest {
     private static MemberDao memberDao;
 
@@ -27,7 +26,6 @@ class MemberDaoTest {
     }
 
     @Test
-    @Order(1)
     void getById() {
         try {
             Optional<Member> testMemberResponse = memberDao.get(2);
