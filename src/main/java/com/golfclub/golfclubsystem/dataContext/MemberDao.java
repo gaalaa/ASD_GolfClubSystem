@@ -1,6 +1,7 @@
 package com.golfclub.golfclubsystem.dataContext;
 
 import com.golfclub.golfclubsystem.models.Member;
+import org.jetbrains.annotations.NotNull;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -12,6 +13,10 @@ public class MemberDao implements IDao<Member> {
 
     public MemberDao() {
         connection = DBManager.DataSource.getConnection();
+    }
+
+    public MemberDao(Connection connection) {
+        this.connection = connection;
     }
 
     @Override
@@ -76,7 +81,7 @@ public class MemberDao implements IDao<Member> {
     }
 
     @Override
-    public void add(Member entity) throws SQLException {
+    public void add(@NotNull Member entity) throws SQLException {
         // Note(Pete): Using preparedStatements help to mitigate SQL injection.
         try (PreparedStatement statement = connection.prepareStatement(
                 "INSERT INTO Member (firstName, lastName, email, password, isAdmin) VALUES (?, ?, ?, ?, ?)",
@@ -98,14 +103,24 @@ public class MemberDao implements IDao<Member> {
     }
 
     @Override
-    public void update(Member entity) {
+    public void update(Member entity) throws SQLException {
+        // Note(Pete): This doesn't update the member's password.
+        try (PreparedStatement statement = connection.prepareStatement(
+                "UPDATE Member SET firstName = ?, lastName = ?, email = ?, isAdmin = ? WHERE id = ?"
+        )) {
+            statement.setString(1, entity.getFirstName());
+            statement.setString(2, entity.getLastName());
+            statement.setString(3, entity.getEmail());
+            statement.setBoolean(4, entity.isAdmin());
+            statement.setInt(5, entity.getId());
 
+            statement.executeUpdate();
+        }
     }
 
     @Override
-    public boolean delete(Member entity) {
-
-        return false;
+    public boolean delete(@NotNull Member entity) throws SQLException {
+        return delete(entity.getId());
     }
 
     @Override

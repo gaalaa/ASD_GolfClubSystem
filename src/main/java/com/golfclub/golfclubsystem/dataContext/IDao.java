@@ -8,7 +8,7 @@ public interface IDao<T> extends AutoCloseable {
     Optional<T> get(int id) throws SQLException;
     List<T> getAll() throws SQLException;
     void add(T entity) throws SQLException;
-    void update(T entity);
-    boolean delete(T entity);
+    void update(T entity) throws SQLException;
+    boolean delete(T entity) throws SQLException;
     boolean delete(int id) throws SQLException;
 }

@@ -8,8 +8,7 @@ import java.sql.Connection
 import java.sql.SQLException
 import java.sql.SQLTimeoutException
 
-//private const val CONNECTION_STRING = "jdbc:sqlite:database.db"
-private const val CONNECTION_STRING = "jdbc:sqlite:test.db"
+private const val CONNECTION_STRING = "jdbc:sqlite:database.db"
 private const val CURRENT_VERSION = 1
 
 /**
