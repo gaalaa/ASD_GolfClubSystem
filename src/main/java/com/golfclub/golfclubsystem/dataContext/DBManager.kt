@@ -1,6 +1,5 @@
 package com.golfclub.golfclubsystem.dataContext
 
-import com.golfclub.golfclubsystem.models.Member
 import jakarta.servlet.ServletContextEvent
 import jakarta.servlet.ServletContextListener
 import org.sqlite.SQLiteDataSource
@@ -27,6 +26,17 @@ class DBManager : ServletContextListener {
                 dataSource.url = CONNECTION_STRING
                 return dataSource.connection
             }
+
+        fun getGeneratedKey(c: Connection): Int {
+            c.createStatement().use { statement ->
+                val rs = statement.executeQuery("SELECT last_insert_rowid()")
+                if (rs.next()) {
+                    return rs.getInt(1)
+                }
+            }
+            // RowId not found.
+            throw Exception("Row ID not found")
+        }
     }
 
     // This runs each time the web application starts.
