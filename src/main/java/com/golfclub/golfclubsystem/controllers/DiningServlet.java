@@ -14,6 +14,7 @@ import java.io.IOException;
 @WebServlet(name = "diningServlet", value = "/dining-servlet")
 
 public class DiningServlet extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //resp.setStatus(404);
