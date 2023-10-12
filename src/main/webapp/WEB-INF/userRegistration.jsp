@@ -6,6 +6,7 @@
 </head>
 <body>
 <%@ include file="jspf/header.jspf" %>
+<h1 class="heading">Register</h1>
 <form action="${pageContext.request.contextPath}/member/userRegistration" method="post" onsubmit="return validateInput()">
     <div class="form-row">
         <label for="firstName">First Name:</label>

@@ -5,6 +5,11 @@ body {
     padding: 0;
 }
 
+.heading {
+    text-align: center;
+    padding: 30px;
+}
+
 form {
     background-color: #fff;
     border: 1px solid #ccc;

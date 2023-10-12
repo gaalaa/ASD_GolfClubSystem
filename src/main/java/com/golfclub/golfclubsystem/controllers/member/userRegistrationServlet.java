@@ -34,8 +34,6 @@ public class userRegistrationServlet extends HttpServlet {
         req.getSession().setAttribute(Attributes.User, member);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/homepage.jsp");
         dispatcher.forward(req, resp);
-
-
     }
 
 }
