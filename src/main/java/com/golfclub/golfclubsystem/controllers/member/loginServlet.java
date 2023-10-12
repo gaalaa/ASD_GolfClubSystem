@@ -29,6 +29,7 @@ public class loginServlet extends HttpServlet {
         String password = req.getParameter("password");
         try{
             member = memberDao.get(userName, password);
+            
         }
         catch (SQLException e){
             System.out.println("An error occurred while fetching member data:\n" + e);
