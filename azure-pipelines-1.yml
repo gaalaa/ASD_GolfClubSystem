@@ -8,8 +8,13 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
-  
+
 steps:
+- task: UseDotNet@2
+  inputs:
+    version: '6.0.x'
+  displayName: 'Use .NET Core SDK'
+
 - script: dotnet test --no-build
   displayName: 'Run unit tests'
 
