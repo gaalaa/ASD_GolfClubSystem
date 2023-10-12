@@ -249,21 +249,20 @@
                 isAdmin: document.querySelector('#adminAdd').value,
                 get fullName() { return `\${this.firstName} \${this.lastName}` }
             }
-            formData.set("firstName", newMember.firstName);
-             const response = await fetch(`${pageContext.request.contextPath}/admin/member/add`, {
+            const response = await fetch(`${pageContext.request.contextPath}/admin/member/add`, {
                  method: 'POST',
                  headers: {
                      'Content-Type': 'application/json'
                  },
                  body: JSON.stringify(newMember)
-             });
-             console.log(response);
-             if (response.status !== 200) {
-                 addModal.hide();
-                 return;
-             }
-             const data = await response.json();
-             const memberId = data.id;
+            });
+            console.log(response);
+            if (response.status !== 200) {
+                addModal.hide();
+                return;
+            }
+            const data = await response.json();
+            const memberId = data.id;
 
             const memberList = document.querySelector('#memberList');
             let templateString = `
