@@ -31,14 +31,14 @@ public class loginServlet extends HttpServlet {
             member = memberDao.get(userName, password);
         }
         catch (SQLException e){
-            System.out.println("Error occurred while fetching member data");
+            System.out.println("An error occurred while fetching member data:\n" + e);
         }
         finally {
             try{
                 memberDao.close();
             }
             catch (Exception e){
-                System.out.println("Error occurred while closing the memberDao");
+                System.out.println("An error occurred while closing the memberDao:\n" + e);
             }
         }
 
