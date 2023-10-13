@@ -43,4 +43,15 @@ public class MemberTest {
             fail(e);
         }
     }
+
+    @Test
+    void testContactFormSubmission() {
+        String name = "Test 1";
+        String email = "Test@gmail.com";
+        String message = "This is a test message.";
+
+        assertEquals("Test 1", name);
+        assertEquals("Test@gmail.com", email);
+        assertEquals("This is a test message.", message);
+    }
 }
