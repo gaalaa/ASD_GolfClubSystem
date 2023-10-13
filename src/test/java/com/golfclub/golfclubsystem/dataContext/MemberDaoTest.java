@@ -174,5 +174,17 @@ class MemberDaoTest {
         }
     }
 
+    @Test
+    void testGetEmail() {
+        try {
+            Member testMember = new Member(0, "Test", "Check", "test@golfclub.com", false);
+            String email = testMember.getEmail();
+            assertNotNull(email);
+            assertEquals("test@golfclub.com", email);
+        } catch (Exception e) {
+            System.out.println("Error occurred while trying to test getEmail: \n" + e);
+            fail(e);
+        }
+    }
 
 }
