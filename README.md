@@ -9,19 +9,19 @@ The Maven pom.xml file lives in the top-level.
 
 ## Building
 To build the project run:
-```java
+```shell
 mvn clean package
 ```
 
 ## Testing
 To test the project run:
-```java
+```shell
 mvn test
 ```
 
 ## Contributions
 
-## Michael
+### Michael
 
 - loginServlet
 - userRegistrationServlet
@@ -31,3 +31,17 @@ mvn test
 - login.css
 - userRegistration.css
 - MemberDaoTest.kt
+- 
+### Peter
+- AdminAddMemberServlet
+- AdminEditMemberServlet
+- AdminMemberServlet
+- AdminServlet
+- LogoutServlet
+- DBManager
+- IDao
+- MemberDao
+- Member
+- Attributes
+- MemberDaoTest
+- MockDBManager
