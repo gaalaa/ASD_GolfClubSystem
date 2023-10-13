@@ -23,36 +23,33 @@ public class loginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        MemberDao memberDao = new MemberDao();
-        Optional<Member> member = Optional.empty();
-        String userName = req.getParameter("email");
-        String password = req.getParameter("password");
-        try{
-            member = memberDao.get(userName, password);
-            
-        }
-        catch (SQLException e){
-            System.out.println("An error occurred while fetching member data:\n" + e);
-        }
-        finally {
+        try(MemberDao memberDao = new MemberDao()){
+            Optional<Member> member = Optional.empty();
+            //Retrieve entered email and password from request
+            String userName = req.getParameter("email");
+            String password = req.getParameter("password");
             try{
-                memberDao.close();
+                member = memberDao.get(userName, password);
             }
-            catch (Exception e){
-                System.out.println("An error occurred while closing the memberDao:\n" + e);
+            catch (SQLException e){
+                System.out.println("An error occurred while fetching member data:\n" + e);
             }
+            //see if user exists in db
+            if(member.isPresent()){
+                req.getSession().setAttribute(Attributes.User, member.get());
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/homepage.jsp");
+                dispatcher.forward(req, resp);
+            }
+            //Otherwise return the login error
+            else{
+                req.setAttribute("loginError", "Invalid Credentials");
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/login.jsp");
+                dispatcher.forward(req, resp);
+            }
+        }
+        catch (Exception e){
+            System.out.println("Error occurred while creating memberDao object: \n" + e);
         }
 
-        //see if user exists in db
-        if(member.isPresent()){
-            req.getSession().setAttribute(Attributes.User, member.get());
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/homepage.jsp");
-            dispatcher.forward(req, resp);
-        }
-        else{
-            req.setAttribute("loginError", "Invalid Credentials");
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/login.jsp");
-            dispatcher.forward(req, resp);
-        }
     }
 }

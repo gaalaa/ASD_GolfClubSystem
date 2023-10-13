@@ -35,13 +35,18 @@ public class userRegistrationServlet extends HttpServlet {
         member.setPassword(password);
         member.setAdmin(false);
         req.getSession().setAttribute(Attributes.User, member);
-        MemberDao memberDao = new MemberDao();
-        try{
-            memberDao.add(member);
+        try(MemberDao memberDao = new MemberDao()){
+            try{
+                memberDao.add(member);
+            }
+            catch (SQLException e){
+                System.out.println("An error occurred while trying to add the new member:\n" + e);
+            }
         }
-        catch (SQLException e){
-            System.out.println("An error occurred while trying to add the new member:\n" + e);
+        catch (Exception e){
+            System.out.println("Error occurred creating memberDAO object: \n" + e);
         }
+
 
 
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/homepage.jsp");
