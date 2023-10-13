@@ -84,7 +84,7 @@
     </ul>
 
     <h2>Enquiry Form</h2>
-    <form action="SubmitContactServlet" method="post">
+    <form action=${pageContext.request.contextPath}"SubmitContactServlet" method="get">
         <label for="name">Name:</label>
         <input type="text" name="name" id="name" required style="width: 300px; height: 20px;"><br>
         <label for="email">Email:</label>
