@@ -1,3 +1,5 @@
+<%--Fix password mismatch error message--%>
+
 <html>
 <head>
     <title>Sign Up</title>
