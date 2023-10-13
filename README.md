@@ -20,3 +20,14 @@ mvn test
 ```
 
 ## Contributions
+
+## Michael
+
+- loginServlet
+- userRegistrationServlet
+- MemberDao.kt
+- login.jsp
+- userRegistration.jsp
+- login.css
+- userRegistration.css
+- MemberDaoTest.kt
