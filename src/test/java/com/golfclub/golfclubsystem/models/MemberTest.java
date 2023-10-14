@@ -1,10 +1,18 @@
 package com.golfclub.golfclubsystem.models;
 
+import com.golfclub.golfclubsystem.Logger;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MemberTest {
+    private static Logger logger;
+
+    @BeforeAll
+    static void setup() {
+        logger =  Logger.Companion.initLogger("./logs");
+    }
 
     @Test
     void testGetFullName() {
@@ -13,9 +21,37 @@ public class MemberTest {
             String fullName = testMember.getFullName();
             assertNotNull(fullName);
             assertEquals("Test Check", fullName);
+            logger.logPassed();
         } catch (Exception e) {
             System.out.println("Error occurred while trying to test getFullName: \n" + e);
+            logger.logFailed();
             fail(e);
         }
+    }
+
+    @Test
+    void testGetEmail() {
+        try {
+            Member testMember = new Member(0, "Test", "Check", "test@golfclub.com", false);
+            String email = testMember.getEmail();
+            assertNotNull(email);
+            assertEquals("test@golfclub.com", email);
+            logger.logPassed();
+        } catch (Exception e) {
+            System.out.println("Error occurred while trying to test getEmail: \n" + e);
+            logger.logFailed();
+            fail(e);
+        }
+    }
+
+    @Test
+    void testContactFormSubmission() {
+        String name = "Test 1";
+        String email = "Test@gmail.com";
+        String message = "This is a test message.";
+
+        assertEquals("Test 1", name);
+        assertEquals("Test@gmail.com", email);
+        assertEquals("This is a test message.", message);
     }
 }

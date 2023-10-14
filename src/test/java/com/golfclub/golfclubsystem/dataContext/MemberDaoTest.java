@@ -1,5 +1,6 @@
 package com.golfclub.golfclubsystem.dataContext;
 
+import com.golfclub.golfclubsystem.Logger;
 import com.golfclub.golfclubsystem.models.Member;
 import org.junit.jupiter.api.*;
 import java.util.*;
@@ -9,11 +10,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MemberDaoTest {
     private static MemberDao memberDao;
+    private static Logger logger;
 
     @BeforeAll
     static void setup() {
         MockDBManager.DataSource.initTestDB();
         memberDao = new MemberDao(MockDBManager.DataSource.getConnection());
+        logger = Logger.Companion.initLogger("./logs");
     }
 
     @AfterAll
@@ -38,8 +41,10 @@ class MemberDaoTest {
             assertEquals("test@golfclub.com", testMember.getEmail());
             assertFalse(testMember.isAdmin());
 
+            logger.logPassed();
         } catch (Exception e) {
             System.out.println("Error occurred while trying to get member by ID: \n" + e);
+            logger.logFailed();
             fail(e);
         }
     }
@@ -56,9 +61,11 @@ class MemberDaoTest {
             assertEquals("User", testMember.getLastName());
             assertEquals(2, testMember.getId());
             assertFalse(testMember.isAdmin());
+            logger.logPassed();
         }
         catch (Exception e){
             System.out.println("Error occurred while trying to get member by email and password: \n" + e);
+            logger.logFailed();
             fail(e);
         }
     }
@@ -104,9 +111,11 @@ class MemberDaoTest {
                 }
             }
 
+            logger.logPassed();
         }
         catch (Exception e){
             System.out.println("Error occurred while trying to get all members: \n" + e);
+            logger.logFailed();
             fail(e);
         }
     }
@@ -124,9 +133,11 @@ class MemberDaoTest {
             assertEquals("User", retrievedMember.getLastName());
             assertEquals("add@golfclub.com", member.getEmail());
             assertTrue(member.isAdmin());
+            logger.logPassed();
         }
         catch (Exception e){
             System.out.println("Error occurred while trying to add a member: \n" + e);
+            logger.logFailed();
             fail(e);
         }
     }
@@ -155,9 +166,11 @@ class MemberDaoTest {
             assertEquals(newLastName, updatedMember.getLastName());
             assertEquals(newEmail, updatedMember.getEmail());
             assertTrue(updatedMember.isAdmin());
+            logger.logPassed();
 
         } catch (Exception e) {
             System.out.println("Error occurred while trying to update member: \n" + e);
+            logger.logFailed();
             fail(e);
         }
     }
@@ -168,21 +181,10 @@ class MemberDaoTest {
             memberDao.delete(4);
             Optional<Member> testMemberResponse = memberDao.get(4);
             assertFalse(testMemberResponse.isPresent());
+            logger.logPassed();
         } catch (Exception e) {
             System.out.println("Error occurred while trying to delete member: \n" + e);
-            fail(e);
-        }
-    }
-
-    @Test
-    void testGetEmail() {
-        try {
-            Member testMember = new Member(0, "Test", "Check", "test@golfclub.com", false);
-            String email = testMember.getEmail();
-            assertNotNull(email);
-            assertEquals("test@golfclub.com", email);
-        } catch (Exception e) {
-            System.out.println("Error occurred while trying to test getEmail: \n" + e);
+            logger.logFailed();
             fail(e);
         }
     }

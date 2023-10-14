@@ -1,0 +1,8 @@
+[SUCCESS] - com.golfclub.golfclubsystem.dataContext.MemberDaoTest:delete:184
+[SUCCESS] - com.golfclub.golfclubsystem.dataContext.MemberDaoTest:getAll:114
+[SUCCESS] - com.golfclub.golfclubsystem.dataContext.MemberDaoTest:update:169
+[SUCCESS] - com.golfclub.golfclubsystem.dataContext.MemberDaoTest:getById:44
+[SUCCESS] - com.golfclub.golfclubsystem.dataContext.MemberDaoTest:add:136
+[SUCCESS] - com.golfclub.golfclubsystem.dataContext.MemberDaoTest:getByEmailAndPassword:64
+[SUCCESS] - com.golfclub.golfclubsystem.models.MemberTest:testGetEmail:39
+[SUCCESS] - com.golfclub.golfclubsystem.models.MemberTest:testGetFullName:24
