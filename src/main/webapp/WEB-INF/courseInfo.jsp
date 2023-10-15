@@ -31,12 +31,69 @@
 <div class="div_container">
     <div class="div_sidebar">
         <h3>In This Section</h3>
+        <a href="#estimate-cost" class="active, underline2">Estimate Cost</a>
         <a href="#play" class="active, underline2">Play</a>
         <a href="#green-fees" class="active, underline2">Green Fees</a>
         <a href="#hire-fees" class="active, underline2">Hire Fees</a>
-        <a href="#estimate-cost" class="active, underline2">Estimate Cost</a>
     </div>
 
+
+    <div class="div_one">
+        <h1 class="underline1" id="estimate-cost">Estimate Cost</h1>
+
+        <h4>
+            <% if (currentUser == null) { %>
+            <span>You are not logged in as a Member, so Member discount will NOT be applied.</span>
+            <% } else { %>
+            <span>You are a member <%= currentUser.getFullName() %>! 15% discount will be applied.</span>
+            <% } %>
+        </h4>
+
+        <div>
+            <table>
+                <tr>
+                    <th><label for="day">Select a Day: </label></th>
+                    <th>
+                        <select name="day" id="day" required>
+                            <option value="notSelected">Not Selected</option>
+                            <option value="weekend">Weekend</option>
+                            <option value="weekday">Weekday</option>
+                        </select>
+                    </th>
+                </tr>
+                <tr>
+                    <th><label for="time">Select a Time: </label></th>
+                    <th>
+                        <select name="time" id="time" required>
+                            <option value="notSelected">Not Selected</option>
+                            <option value="peak">Sunrise - 1pm</option>
+                            <option value="offPeak">1pm - 3pm</option>
+                            <option value="twilight">After 3pm</option>
+                        </select>
+                    </th>
+                </tr>
+                <tr>
+                    <th><label for="hireOption">Select a Hire Option (Optional): </label></th>
+                    <th>
+                        <select name="hireOption" id="hireOption" required>
+                            <option value="notSelected">Not Selected</option>
+                            <optgroup label="9 Holes">
+                                <option value="electricCart9">Electric Cart for 9 holes</option>
+                                <option value="standard9">Standard Hire Set</option>
+                                <option value="pullBuggy9">Pull Buggy for 9 holes</option>
+                            <optgroup label="18 Holes">
+                                <option value="electricCart18">Electric Cart for 18 holes</option>
+                                <option value="standard18">Standard Hire Set</option>
+                                <option value="pullBuggy18">Pull Buggy for 18 holes</option>
+                    </th>
+                </tr>
+            </table>
+            <button onclick="calculateCost()" type="button">Calculate</button>
+            <p id="costDisplay"></p>
+        </div>
+    </div>
+
+    <br />
 
     <div class="div_one">
         <h1 class="underline1" id="play">Play</h1>
@@ -134,64 +191,6 @@
             </tr>
         </table>
     </div>
-
-    <br />
-
-    <div class="div_one">
-        <h1 class="underline1" id="estimate-cost">Estimate Cost</h1>
-
-        <h4>
-            <% if (currentUser == null) { %>
-            <span>You are not logged in as a Member, so Member discount will NOT be applied.</span>
-            <% } else { %>
-            <span>You are a member <%= currentUser.getFullName() %>! 15% discount will be applied.</span>
-            <% } %>
-        </h4>
-
-        <div>
-            <table>
-                <tr>
-                    <th><label for="day">Select a Day: </label></th>
-                    <th>
-                        <select name="day" id="day" required>
-                            <option value="notSelected">Not Selected</option>
-                            <option value="weekend">Weekend</option>
-                            <option value="weekday">Weekday</option>
-                        </select>
-                    </th>
-                </tr>
-                <tr>
-                    <th><label for="time">Select a Time: </label></th>
-                    <th>
-                        <select name="time" id="time" required>
-                            <option value="notSelected">Not Selected</option>
-                            <option value="peak">Sunrise - 1pm</option>
-                            <option value="offPeak">1pm - 3pm</option>
-                            <option value="twilight">After 3pm</option>
-                        </select>
-                    </th>
-                </tr>
-                <tr>
-                    <th><label for="hireOption">Select a Hire Option (Optional): </label></th>
-                    <th>
-                        <select name="hireOption" id="hireOption" required>
-                            <option value="notSelected">Not Selected</option>
-                            <optgroup label="9 Holes">
-                                    <option value="electricCart9">Electric Cart for 9 holes</option>
-                                    <option value="standard9">Standard Hire Set</option>
-                                    <option value="pullBuggy9">Pull Buggy for 9 holes</option>
-                            <optgroup label="18 Holes">
-                                    <option value="electricCart18">Electric Cart for 18 holes</option>
-                                    <option value="standard18">Standard Hire Set</option>
-                                    <option value="pullBuggy18">Pull Buggy for 18 holes</option>
-                    </th>
-                </tr>
-            </table>
-            <button onclick="calculateCost()">Calculate</button>
-            <div id="costDisplay"></div>
-        </div>
-    </div>
-
 </div>
 
 
