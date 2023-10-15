@@ -1,3 +1,4 @@
+<%@ page import="com.golfclub.golfclubsystem.models.Member" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -33,6 +34,7 @@
         <a href="#play" class="active, underline2">Play</a>
         <a href="#green-fees" class="active, underline2">Green Fees</a>
         <a href="#hire-fees" class="active, underline2">Hire Fees</a>
+        <a href="#estimate-cost" class="active, underline2">Estimate Cost</a>
     </div>
 
 
@@ -90,17 +92,17 @@
                 <th>Fees</th>
             </tr>
             <tr>
-                <td>Weekend Peak</td>
+                <td>Weekday Peak</td>
                 <td>Sunrise - 1pm</td>
                 <td>$55</td>
             </tr>
             <tr>
-                <td>Weekend Off Peak</td>
+                <td>Weekday Off Peak</td>
                 <td>1pm - 3pm</td>
                 <td>$50</td>
             </tr>
             <tr>
-                <td>Weekend Twilight</td>
+                <td>Weekday Twilight</td>
                 <td>After 3pm</td>
                 <td>$45</td>
             </tr>
@@ -116,12 +118,7 @@
                 <th>18 Holes</th>
             </tr>
             <tr>
-                <td>Electric Cart - Visitor</td>
-                <td>$32</td>
-                <td>$42</td>
-            </tr>
-            <tr>
-                <td>Electric Cart - Member</td>
+                <td>Electric Cart</td>
                 <td>$22</td>
                 <td>$32</td>
             </tr>
@@ -137,8 +134,148 @@
             </tr>
         </table>
     </div>
+
+    <br />
+
+    <div class="div_one">
+        <h1 class="underline1" id="estimate-cost">Estimate Cost</h1>
+
+        <h4>
+            <% if (currentUser == null) { %>
+            <span>You are not logged in as a Member, so Member discount will NOT be applied.</span>
+            <% } else { %>
+            <span>You are a member <%= currentUser.getFullName() %>! Member discount will be applied.</span>
+            <% } %>
+        </h4>
+
+        <div>
+            <table>
+                <tr>
+                    <th><label for="day">Select a Day: </label></th>
+                    <th>
+                        <select name="day" id="day" required>
+                            <option value="notSelected">Not Selected</option>
+                            <option value="weekend">Weekend</option>
+                            <option value="weekday">Weekday</option>
+                        </select>
+                    </th>
+                </tr>
+                <tr>
+                    <th><label for="time">Select a Time: </label></th>
+                    <th>
+                        <select name="time" id="time" required>
+                            <option value="notSelected">Not Selected</option>
+                            <option value="peak">Sunrise - 1pm</option>
+                            <option value="offPeak">1pm - 3pm</option>
+                            <option value="twilight">After 3pm</option>
+                        </select>
+                    </th>
+                </tr>
+                <tr>
+                    <th><label for="hireOption">Select a Hire Option (Optional): </label></th>
+                    <th>
+                        <select name="hireOption" id="hireOption" required>
+                            <option value="notSelected">Not Selected</option>
+                            <optgroup label="9 Holes">
+                                    <option value="electricCart9">Electric Cart for 9 holes</option>
+                                    <option value="standard9">Standard Hire Set</option>
+                                    <option value="pullBuggy9">Pull Buggy for 9 holes</option>
+                            <optgroup label="18 Holes">
+                                    <option value="electricCart18">Electric Cart for 18 holes</option>
+                                    <option value="standard18">Standard Hire Set</option>
+                                    <option value="pullBuggy18">Pull Buggy for 18 holes</option>
+                    </th>
+                </tr>
+            </table>
+            <button onclick="calculateCost()">Calculate</button>
+            <div id="costDisplay"></div>
+        </div>
+    </div>
+
 </div>
 
+
+    <script>
+        var cost = 0;
+        var estimatedCost = document.getElementById("costDisplay");
+
+        function calculateCost() {
+            var day = document.getElementById("day").value;
+            var time = document.getElementById("time").value;
+
+            // Day and Time
+                if (day==="weekend" && time==="peak") {
+                    cost = 70;
+                    ifHiring();
+                }
+                if (day==="weekend" && time==="offPeak") {
+                    cost = 60;
+                    ifHiring();
+                }
+                if (day==="weekend" && time==="twilight") {
+                    cost = 50;
+                    ifHiring();
+                }
+                if (day==="weekday" && time==="peak") {
+                    cost = 55;
+                    ifHiring();
+                }
+                if (day==="weekday" && time==="offPeak") {
+                    cost = 50;
+                    ifHiring();
+                }
+                if (day==="weekday" && time==="twilight") {
+                    cost = 45;
+                    ifHiring();
+                }
+            //If day or time is not selected
+            if (day==="notSelected" && time!=="notSelected") {
+                notSelected("day");
+            }
+            else if (time==="notSelected" && day!=="notSelected") {
+                notSelected("time");
+            }
+            else if (day==="notSelected" && time==="notSelected") {
+                notSelectedBoth();
+            }
+            else
+                displayCost(cost);
+        }
+
+        //Additional cost if the user hires something
+        function ifHiring() {
+            var hireOption = document.getElementById("hireOption").value;
+                if (hireOption==="electricCart9") { cost += 22; }
+                if (hireOption==="standard9") { cost += 25; }
+                if (hireOption==="pullBuggy9") { cost += 10; }
+                if (hireOption==="electricCart18") { cost += 32; }
+                if (hireOption==="standard18") { cost += 35; }
+                if (hireOption==="pullBuggy18") { cost += 15; }
+        }
+
+        function displayCost(cost) {
+            estimatedCost.innerHTML = "The estimated cost is: $" + cost;
+        }
+
+        //If the user does not select either day or time
+        function notSelected(item) {
+            if (item==="day") {
+               estimatedCost.innerHTML = "Please select a day";
+            }
+            else if (item==="time") {
+                estimatedCost.innerHTML = "Please select a time";
+            }
+        }
+
+        //If the user does not select both day and time
+        function notSelectedBoth() {
+            estimatedCost.innerHTML = "Please select a day and time";
+        }
+    </script>
+
+<%--    <% if (currentUser == null) { %>--%>
+<%--    <% } else { %>--%>
+<%--    <% } %>--%>
 
     <script>
         var slideIndex = 1;
@@ -159,5 +296,7 @@
             x[slideIndex-1].style.display = "block";
         }
     </script>
+
+
 </body>
 </html>
