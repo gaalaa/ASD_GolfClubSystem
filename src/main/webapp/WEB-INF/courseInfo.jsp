@@ -144,7 +144,7 @@
             <% if (currentUser == null) { %>
             <span>You are not logged in as a Member, so Member discount will NOT be applied.</span>
             <% } else { %>
-            <span>You are a member <%= currentUser.getFullName() %>! Member discount will be applied.</span>
+            <span>You are a member <%= currentUser.getFullName() %>! 15% discount will be applied.</span>
             <% } %>
         </h4>
 
@@ -235,11 +235,12 @@
             else if (time==="notSelected" && day!=="notSelected") {
                 notSelected("time");
             }
+            //If both day and time is not selected
             else if (day==="notSelected" && time==="notSelected") {
                 notSelectedBoth();
             }
             else
-                displayCost(cost);
+                checkMember(cost);
         }
 
         //Additional cost if the user hires something
@@ -253,8 +254,21 @@
                 if (hireOption==="pullBuggy18") { cost += 15; }
         }
 
+        //Check if the user is logged in or not
+        function checkMember(cost) {
+            <% if (currentUser == null) { %>
+            displayCost(cost);
+            <% } else { %>
+            displayCostMember(cost);
+            <% } %>
+        }
+
         function displayCost(cost) {
-            estimatedCost.innerHTML = "The estimated cost is: $" + cost;
+            estimatedCost.innerHTML = "The estimated cost is: <b>$" + cost + "</b>";
+        }
+
+        function displayCostMember(cost) {
+            estimatedCost.innerHTML = "The estimated cost is: <b>$" + cost*0.85 + "</b>, 15% discount has been applied!";
         }
 
         //If the user does not select either day or time
