@@ -8,7 +8,7 @@ import java.sql.SQLException
 import java.sql.SQLTimeoutException
 
 private const val CONNECTION_STRING = "jdbc:sqlite:database.db"
-private const val CURRENT_VERSION = 2
+private const val CURRENT_VERSION = 3
 
 /**
  * DBManager is responsible for initialising and upgrading the database on startup and managing connections to the database.
@@ -59,7 +59,7 @@ class DBManager : ServletContextListener {
                         // so that the database can be upgrade from any version.
                         if (dbVersion < 1) upgradeFromV0()
                         if (dbVersion < 2) upgradeFromV1()
-                        if (dbVersion < 3) { /* Next migration goes here. */ }
+                        if (dbVersion < 3) upgradeFromV2()
                     } else {
                         throw SQLException("Could not get user_version.")
                     }
@@ -119,6 +119,22 @@ class DBManager : ServletContextListener {
                     remarks TEXT,
                     FOREIGN KEY (member_id) REFERENCES Member(id)
                 );
+            """.trimIndent())
+        }
+    }
+
+    private fun upgradeFromV2() {
+        connection.createStatement().use { statement ->
+            statement.executeUpdate("""
+                CREATE TABLE Menu (
+                    menuID INTEGER PRIMARY KEY,
+                    menuName TEXT,
+                    menuPrice INTEGER NOT NULL,
+                    menuDescription TEXT,
+                    isBeverage INTEGER NOT NULL
+                );
+                INSERT INTO Menu (menuName, menuPrice, menuDescription, isBeverage)
+                VALUES ('Pineapple Pizza','15','bruh',0)
             """.trimIndent())
         }
     }
