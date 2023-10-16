@@ -88,7 +88,7 @@
                     </th>
                 </tr>
             </table>
-            <button onclick="calculateCost()" type="button">Calculate</button>
+            <button onclick="calculateCost()">Calculate</button>
             <p id="costDisplay"></p>
         </div>
     </div>
