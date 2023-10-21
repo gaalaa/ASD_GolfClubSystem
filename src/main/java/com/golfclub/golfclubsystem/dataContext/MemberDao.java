@@ -81,7 +81,7 @@ public class MemberDao implements IDao<Member> {
     }
 
     @Override
-    public void add(@NotNull Member entity) throws SQLException {
+    public Member add(@NotNull Member entity) throws SQLException {
         // Note(Pete): Using preparedStatements help to mitigate SQL injection.
         try (PreparedStatement statement = connection.prepareStatement(
                 "INSERT INTO Member (firstName, lastName, email, password, isAdmin) VALUES (?, ?, ?, ?, ?)")) {
@@ -97,6 +97,7 @@ public class MemberDao implements IDao<Member> {
         // Note(Pete): Sqlite-JDBC doesn't support getGeneratedKeys, so we have to do this manually.
         int lastInsertedRowId = DBManager.DataSource.getGeneratedKey(connection);
         entity.setId(lastInsertedRowId);
+        return entity;
     }
 
     @Override

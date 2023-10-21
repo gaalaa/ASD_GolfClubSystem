@@ -1,6 +1,7 @@
 package com.golfclub.golfclubsystem.dataContext;
 
 import com.golfclub.golfclubsystem.models.Menu;
+import kotlin.NotImplementedError;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -55,8 +56,8 @@ public class MenuDao implements IDao<Menu> {
     }
 
     @Override
-    public void add(Menu entity) throws SQLException {
-
+    public Menu add(Menu entity) throws SQLException {
+        return null;
     }
 
     @Override

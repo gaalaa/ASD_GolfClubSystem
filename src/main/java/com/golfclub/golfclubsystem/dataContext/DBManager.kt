@@ -8,7 +8,7 @@ import java.sql.SQLException
 import java.sql.SQLTimeoutException
 
 private const val CONNECTION_STRING = "jdbc:sqlite:database.db"
-private const val CURRENT_VERSION = 3
+private const val CURRENT_VERSION = 4
 
 /**
  * DBManager is responsible for initialising and upgrading the database on startup and managing connections to the database.
@@ -60,6 +60,7 @@ class DBManager : ServletContextListener {
                         if (dbVersion < 1) upgradeFromV0()
                         if (dbVersion < 2) upgradeFromV1()
                         if (dbVersion < 3) upgradeFromV2()
+                        if (dbVersion < 4) upgradeFromV3()
                     } else {
                         throw SQLException("Could not get user_version.")
                     }
@@ -135,6 +136,35 @@ class DBManager : ServletContextListener {
                 );
                 INSERT INTO Menu (menuName, menuPrice, menuDescription, isBeverage)
                 VALUES ('Pineapple Pizza','15','bruh',0)
+            """.trimIndent())
+        }
+    }
+
+    private fun upgradeFromV3() {
+        connection.createStatement().use { statement ->
+            statement.executeUpdate("""
+                CREATE TABLE Product (
+                    id INTEGER PRIMARY KEY,
+                    name TEXT,
+                    description TEXT,
+                    price NUMERIC,
+                    stock INTEGER NOT NULL,
+                    imageUri TEXT
+                );
+                CREATE TABLE [Order] ( -- Order is in brackets here because 'Order' is a keyword in SQLite so it doesn't like tables with that name
+                    id INTEGER PRIMARY KEY,
+                    creationDate TEXT NOT NULL,
+                    memberId INTEGER NOT NULL,
+                    FOREIGN KEY (memberId) REFERENCES Member(id)
+                );
+                CREATE TABLE ProductOrder (
+                    orderId INTEGER NOT NULL,
+                    productId INTEGER NOT NULL,
+                    quantity INTEGER NOT NULL,
+                    PRIMARY KEY (orderId, productId),
+                    FOREIGN KEY (orderId) REFERENCES [Order](id),
+                    FOREIGN KEY (productId) REFERENCES Product(id)
+                );
             """.trimIndent())
         }
     }
