@@ -5,4 +5,5 @@ package com.golfclub.golfclubsystem;
  */
 public class Attributes {
     public static final String User = "user";
+    public static final String Cart = "shoppingCart";
 }
