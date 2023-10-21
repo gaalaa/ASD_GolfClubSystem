@@ -28,7 +28,7 @@ public class ProductDao implements IDao<Product> {
                             result.getString("name"),
                             result.getString("description"),
                             result.getString("imageUri"),
-                            result.getBigDecimal("priceFormat"),
+                            result.getBigDecimal("price"),
                             result.getInt("stock")
                     );
 
