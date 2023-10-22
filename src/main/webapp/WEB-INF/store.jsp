@@ -13,8 +13,11 @@
 </head>
 <body>
 <%@include file="jspf/header.jspf" %>
-<div class="container d-flex justify-content-end">
-    <%@include file="jspf/cart.jspf" %>
+<div class="container d-flex justify-content-between">
+    <h2>Golf Shop</h2>
+    <div class="d-flex justify-content-end">
+        <%@include file="jspf/cart.jspf" %>
+    </div>
 </div>
 <div>
     <div>
@@ -34,7 +37,7 @@
                             <div class="card-body">
                                 <h5 class="card-title"><%= product.getName() %> </h5>
                                 <p class="card-text"><%= product.getDescription() %> </p>
-                                <p class="fw-bold">$<%= product.getPrice().toString() %> </p>
+                                <p class="fw-bold" style="font-size: 1.5rem">$<%= product.getPrice().toString() %> </p>
                                 <button class="btn btn-primary" onclick="onAddToCartClicked(event, <%= product.getId() %>)">
                                     Add to Cart
                                 </button>
@@ -48,11 +51,25 @@
     </div>
 </div>
 
-</body>
+<div id="to-checkout-modal" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>Item added to your cart.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Keep Shopping</button>
+                <a href="${pageContext.request.contextPath}/store/cart" id="to-checkout-button" class="btn btn-primary">Go to checkout</a>
+            </div>
+        </div>
+    </div>
+</div>
 
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.bundle.min.js"></script>
 <script>
     const cartItemCountDot = document.querySelector('#cart-count-dot');
     const cartItemCountText = document.querySelector('#cart-count');
+    const toCheckoutModal = new bootstrap.Modal(document.querySelector('#to-checkout-modal'), {});
 
     updateVisibilityOfCartDot();
 
@@ -63,12 +80,12 @@
     }
 
     /**
-     * @param {Event} event
+     * @param {PointerEvent} event
      * @param {number} productId
      */
     async function onAddToCartClicked(event, productId) {
         event.preventDefault();
-        const response = await fetch(`${pageContext.request.contextPath}/store/cart?productId=\${productId}`, {
+        const response = await fetch(`${pageContext.request.contextPath}/store/cart/add?productId=\${productId}`, {
             method: 'POST',
         });
 
@@ -79,6 +96,8 @@
 
         cartItemCountText.innerText = (Number(cartItemCountText.innerHTML) + 1).toString();
         updateVisibilityOfCartDot();
+
+        toCheckoutModal.show();
     }
 </script>
 </html>

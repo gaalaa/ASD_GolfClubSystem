@@ -23,7 +23,7 @@
             <button class="btn btn-outline-primary" onclick="onAddUserClicked()">Add Member</button>
         </div>
 
-        <div id="memberList" class="mt-2 ml-0 ps-0">
+        <div id="member-list" class="mt-2 ml-0 ps-0">
             <% for (Member member : members) { %>
                 <div data-asd-name="<%= member.getFullName().toLowerCase() %>" data-asd-id="<%= member.getId() %>" class="card mb-2">
                     <div class="card-body d-flex justify-content-between align-items-center">
@@ -57,37 +57,37 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="${pageContext.request.contextPath}/admin/member/edit" method="post" id="editMemberForm">
+                        <form action="${pageContext.request.contextPath}/admin/member/edit" method="post" id="edit-member-form">
                             <div class="mb-3 row">
-                                <label for="idEdit" class="col-sm-2 col-form-label">Member ID</label>
+                                <label for="id-edit" class="col-sm-2 col-form-label">Member ID</label>
                                 <div class="col-sm-10">
-                                    <input type="text" readonly class="form-control-plaintext" name="id" id="idEdit" value="">
+                                    <input type="text" readonly class="form-control-plaintext" name="id" id="id-edit" value="">
                                 </div>
                             </div>
                             <div class="mb-3 row d-flex">
                                 <div class="d-flex gap-2">
                                     <div class="col form-floating mb-3">
-                                        <input type="text" class="form-control" name="firstName" id="firstNameEdit" placeholder=" "/>
-                                        <label for="firstNameEdit">First Name</label>
+                                        <input type="text" class="form-control" name="firstName" id="first-name-edit" placeholder=" "/>
+                                        <label for="first-name-edit">First Name</label>
                                     </div>
                                     <div class="col form-floating mb-3">
-                                        <input type="text" class="form-control" name="lastName" id="lastNameEdit" placeholder=" "/>
-                                        <label for="lastNameEdit">Last Name</label>
+                                        <input type="text" class="form-control" name="lastName" id="last-name-edit" placeholder=" "/>
+                                        <label for="last-name-edit">Last Name</label>
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <div class="col form-floating mb-3">
-                                        <input type="text" class="form-control" name="email" id="emailEdit" placeholder=" "/>
-                                        <label for="emailEdit">Email Address</label>
+                                        <input type="text" class="form-control" name="email" id="email-edit" placeholder=" "/>
+                                        <label for="email-edit">Email Address</label>
                                     </div>
                                 </div>
                             </div>
-                            <input type="hidden" name="admin" id="adminEdit" value="false">
+                            <input type="hidden" name="admin" id="admin-edit" value="false">
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" form="editMemberForm" class="btn btn-primary">Save Changes</button>
+                        <button type="submit" form="edit-member-form" class="btn btn-primary">Save Changes</button>
                     </div>
                 </div>
             </div>
@@ -102,39 +102,39 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
                     </div>
                     <div class="modal-body">
-                        <form id="addMemberForm">
+                        <form id="add-member-form">
                             <div class="mb-3 row d-flex">
                                 <div class="d-flex gap-2">
                                     <div class="col form-floating mb-3">
-                                        <input type="text" class="form-control" name="firstName" id="firstNameAdd"
+                                        <input type="text" class="form-control" name="firstName" id="first-name-add"
                                                placeholder=" "/>
-                                        <label for="firstNameAdd">First Name</label>
+                                        <label for="first-name-add">First Name</label>
                                     </div>
                                     <div class="col form-floating mb-3">
-                                        <input type="text" class="form-control" name="lastName" id="lastNameAdd"
+                                        <input type="text" class="form-control" name="lastName" id="last-name-add"
                                                placeholder=" "/>
-                                        <label for="lastNameAdd">Last Name</label>
+                                        <label for="last-name-add">Last Name</label>
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <div class="col form-floating mb-3">
-                                        <input type="text" class="form-control" name="email" id="emailAdd" placeholder=" "/>
-                                        <label for="emailAdd">Email Address</label>
+                                        <input type="text" class="form-control" name="email" id="email-add" placeholder=" "/>
+                                        <label for="email-add">Email Address</label>
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <div class="col form-floating mb-3">
-                                        <input type="text" class="form-control" name="email" id="passwordAdd" placeholder=" "/>
-                                        <label for="passwordAdd">Password</label>
+                                        <input type="text" class="form-control" name="email" id="password-add" placeholder=" "/>
+                                        <label for="password-add">Password</label>
                                     </div>
                                 </div>
                             </div>
-                            <input type="hidden" name="admin" id="adminAdd" value="false">
+                            <input type="hidden" name="admin" id="admin-add" value="false">
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button id="confirmAddMemberButton" class="btn btn-primary">Add Member</button>
+                        <button id="confirm-add-member-button" class="btn btn-primary">Add Member</button>
                     </div>
                 </div>
             </div>
@@ -153,7 +153,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" id="confirmDeleteButton" class="btn btn-primary">Delete</button>
+                        <button type="button" id="confirm-delete-button" class="btn btn-primary">Delete</button>
                     </div>
                 </div>
             </div>
@@ -167,8 +167,8 @@
     const addModal = new bootstrap.Modal(document.querySelector('#add-modal'), {});
     const editModal = new bootstrap.Modal(document.querySelector('#edit-modal'), {});
     const deleteModal = new bootstrap.Modal(document.querySelector('#delete-modal'), {});
-    const confirmDeleteButton = document.querySelector('#confirmDeleteButton');
-    const confirmAddButton = document.querySelector('#confirmAddMemberButton');
+    const confirmDeleteButton = document.querySelector('#confirm-delete-button');
+    const confirmAddButton = document.querySelector('#confirm-add-member-button');
 
     /**
      * Filters through users by their full name
@@ -196,11 +196,11 @@
         const data = (await response.json());
         console.log(response, data);
 
-        document.querySelector('#idEdit').value = id;
-        document.querySelector('#firstNameEdit').value = data.firstName;
-        document.querySelector('#lastNameEdit').value = data.lastName;
-        document.querySelector('#emailEdit').value = data.email;
-        document.querySelector('#adminEdit').value = data.isAdmin;
+        document.querySelector('#id-edit').value = id;
+        document.querySelector('#first-name-edit').value = data.firstName;
+        document.querySelector('#last-name-edit').value = data.lastName;
+        document.querySelector('#email-edit').value = data.email;
+        document.querySelector('#admin-edit').value = data.isAdmin;
 
         editModal.show();
     }
@@ -258,7 +258,7 @@
             const data = await response.json();
             const memberId = data.id;
 
-            const memberList = document.querySelector('#memberList');
+            const memberList = document.querySelector('#member-list');
             let templateString = `
                 <div data-asd-name="\${newMember.fullName}" data-asd-id="\${memberId}" class="card mb-2">
                     <div class="card-body d-flex justify-content-between align-items-center">
