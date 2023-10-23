@@ -16,7 +16,7 @@
                 <a href="${pageContext.request.contextPath}/courseInfo-servlet" class="nav-link px-2 ${pageContext.request.requestURI eq '/WEB-INF/courseInfo.jsp' ? 'link-secondary' : ''}">Course Info</a>
             </li>
             <li>
-                <a href="${pageContext.request.contextPath}/dining-servlet" class="nav-link px-2 ${pageContext.request.requestURI eq '/WEB-INF/dining.jsp' ? 'link-secondary' : ''}">Dining</a>
+                <a href="${pageContext.request.contextPath}/menu-servlet" class="nav-link px-2 ${pageContext.request.requestURI eq '/WEB-INF/dining.jsp' ? 'link-secondary' : ''}">Dining</a>
             </li>
             <li>
                 <a href="${pageContext.request.contextPath}/ContactServlet" class="nav-link px-2 ${pageContext.request.requestURI eq '/WEB-INF/contact.jsp' ? 'link-secondary' : ''}">Contact Us</a>

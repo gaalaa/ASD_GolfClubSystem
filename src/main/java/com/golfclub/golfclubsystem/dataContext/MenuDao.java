@@ -2,6 +2,7 @@ package com.golfclub.golfclubsystem.dataContext;
 
 import com.golfclub.golfclubsystem.models.Menu;
 import kotlin.NotImplementedError;
+import org.jetbrains.annotations.NotNull;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -66,7 +67,7 @@ public class MenuDao implements IDao<Menu> {
     }
 
     @Override
-    public boolean delete(Menu entity) {
+    public boolean delete(@NotNull Menu entity) {
         return false;
     }
 
