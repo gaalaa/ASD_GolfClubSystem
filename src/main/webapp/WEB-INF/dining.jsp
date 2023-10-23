@@ -17,18 +17,18 @@
 <%@ include file="jspf/header.jspf" %>
 <h1 class="heading1">Dine With Us</h1>
 
-<%
-List<Menu> menus = (List<Menu>) request.getAttribute("menus");
-    if (menus != null) {
-    for (Menu menu : menus) {
+    <%
+        List<Menu> menus = (List<Menu>) request.getAttribute("menus");
+        if (menus != null) {
+            for (Menu menu : menus) {
     %>
-    <p>Menu ID: <%= menu.getMenuID() %></p>
-    <p>Menu Name: <%= menu.getMenuName() %></p>
-    <p>Menu Price: <%= menu.getMenuPrice() %></p>
-    <p>Menu Description: <%= menu.getMenuDescription() %></p>
-    <p>Is Beverage: <%= menu.isBeverage() %></p>
-    <hr/>
-        <%
+        <p>Menu ID: <%= menu.getMenuID() %></p>
+        <p>Menu Name: <%= menu.getMenuName() %></p>
+        <p>Menu Price: <%= menu.getMenuPrice() %></p>
+        <p>Menu Description: <%= menu.getMenuDescription() %></p>
+        <p>Is Beverage: <%= menu.isBeverage() %></p>
+        <hr/>
+    <%
             }
         }
     %>
