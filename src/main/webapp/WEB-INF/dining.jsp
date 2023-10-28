@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/w3_slideshow.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/courseInfo.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/diningPage.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dining | ASD Golf Club</title>
 </head>
@@ -22,12 +23,19 @@
         if (menus != null) {
             for (Menu menu : menus) {
     %>
-        <p>Menu ID: <%= menu.getMenuID() %></p>
-        <p>Menu Name: <%= menu.getMenuName() %></p>
-        <p>Menu Price: <%= menu.getMenuPrice() %></p>
-        <p>Menu Description: <%= menu.getMenuDescription() %></p>
-        <p>Is Beverage: <%= menu.isBeverage() %></p>
-        <hr/>
+<%--        <p>Menu ID: <%= menu.getMenuID() %></p>--%>
+<%--        <p>Menu Name: <%= menu.getMenuName() %></p>--%>
+<%--        <p>Menu Price: <%= menu.getMenuPrice() %></p>--%>
+<%--        <p>Menu Description: <%= menu.getMenuDescription() %></p>--%>
+<%--        <p>Is Beverage: <%= menu.isBeverage() %></p>--%>
+<%--        <hr/>--%>
+
+    <div class="div_menu">
+        <div class="div_menu_name"><%= menu.getMenuName()%></div>
+        <div class="div_menu_price"><%= menu.getMenuPrice()%></div>
+        <div class="div_menu_description"><%= menu.getMenuDescription()%></div>
+        <hr>
+    </div>
     <%
             }
         }

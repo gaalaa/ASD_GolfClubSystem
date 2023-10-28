@@ -135,7 +135,12 @@ class DBManager : ServletContextListener {
                     isBeverage INTEGER NOT NULL
                 );
                 INSERT INTO Menu (menuName, menuPrice, menuDescription, isBeverage)
-                VALUES ('Pineapple Pizza','15','bruh',0)
+                VALUES ('Cheese Pizza',10,'A simple pizza topped with melted mozzarella goodness.',0),
+                ('Peperoni Pizza',12,'A classic pizza topped with slices of crispy pepperoni.',0),
+                ('Hawaiian Pizza',12,'A controversial pizza topped with pineapple.',0),
+                ('Pepsi',3,'An iconic cola soft drink.',1),
+                ('Fanta',3,'A bubbly orange soft drink.',1),
+                ('Sprite',3,'A refreshing lemonated soft drink.',1)
             """.trimIndent())
         }
     }
