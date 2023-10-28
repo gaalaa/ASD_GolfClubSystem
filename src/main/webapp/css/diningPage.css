@@ -1,0 +1,28 @@
+.div_menu {
+    /*width: 60%;*/
+    /*padding: 5px;*/
+    /*margin-left: 30%;*/
+    width: 90%;
+    overflow: hidden;
+    margin-left: 25%;
+}
+
+.div_menu_name, .div_menu_price {
+    float: left;
+    width: 50%;
+}
+
+.div_menu_name {
+    font-weight: bold;
+    text-align: left;
+}
+
+.div_menu_price {
+    font-weight: bold;
+    text-align: left;
+}
+
+.div_menu_description {
+    font-family: cursive;
+    text-align: left;
+}

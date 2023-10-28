@@ -10,7 +10,7 @@ public class Menu {
 
 public Menu() {}
 
-public Menu(int menuID, String menuName, double menuPrice, String menuDescription,Boolean isBeverage) {
+public Menu(int menuID, String menuName, double menuPrice, String menuDescription, Boolean isBeverage) {
     this.menuID = menuID;
     this.menuName = menuName;
     this.menuPrice = menuPrice;
