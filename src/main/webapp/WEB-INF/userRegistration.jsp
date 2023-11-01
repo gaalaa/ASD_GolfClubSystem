@@ -1,5 +1,3 @@
-<%--Fix password mismatch error message--%>
-
 <html>
 <head>
     <title>Sign Up</title>
@@ -9,7 +7,7 @@
 <body>
 <%@ include file="jspf/header.jspf" %>
 <h1 class="heading">Register</h1>
-<form action="${pageContext.request.contextPath}/member/userRegistration" method="post" onsubmit="return validateInput()">
+<form id="detailsForm" action="${pageContext.request.contextPath}/member/userRegistration" method="post" onsubmit="return validateInput()">
     <div class="form-row">
         <label for="firstName">First Name:</label>
         <input type="text" id="firstName" name="firstName" required>
@@ -29,10 +27,10 @@
     <div class="form-row">
         <label for="confirmPassword">Re-type Password:</label>
         <input type="password" id="confirmPassword" name="confirmPassword" required>
-        <span id="passwordMatch"></span>
     </div>
+    <span id="passwordMatch"></span>
     <div class="form-row">
-        <input type="submit" value="Register">
+        <input type="submit" id ="submitForm" value="Register">
     </div>
 </form>
 
@@ -47,6 +45,9 @@
             confirmPasswordField.value = "";
             return false;
         }
+        //check if email is unique in db
+
+
         return true;
     }
 </script>

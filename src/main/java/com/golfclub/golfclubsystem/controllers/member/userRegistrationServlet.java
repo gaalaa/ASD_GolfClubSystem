@@ -21,7 +21,6 @@ public class userRegistrationServlet extends HttpServlet {
         dispatcher.forward(req, resp);
     }
 
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String firstName = req.getParameter("firstName");
@@ -46,9 +45,6 @@ public class userRegistrationServlet extends HttpServlet {
         catch (Exception e){
             System.out.println("Error occurred creating memberDAO object: \n" + e);
         }
-
-
-
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/homepage.jsp");
         dispatcher.forward(req, resp);
     }
