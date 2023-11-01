@@ -11,10 +11,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-import javax.print.attribute.Attribute;
 import java.io.IOException;
-import java.security.GeneralSecurityException;
 import java.sql.SQLException;
 
 @WebServlet("/member/editPersonalDetails")
