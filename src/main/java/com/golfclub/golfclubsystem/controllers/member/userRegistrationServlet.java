@@ -2,6 +2,7 @@ package com.golfclub.golfclubsystem.controllers.member;
 
 
 import com.golfclub.golfclubsystem.Attributes;
+import com.golfclub.golfclubsystem.EmailManager;
 import com.golfclub.golfclubsystem.dataContext.MemberDao;
 import com.golfclub.golfclubsystem.models.Member;
 import jakarta.servlet.RequestDispatcher;
@@ -40,6 +41,13 @@ public class userRegistrationServlet extends HttpServlet {
             }
             catch (SQLException e){
                 System.out.println("An error occurred while trying to add the new member:\n" + e);
+            }
+            try {
+                EmailManager emailManager = new EmailManager();
+                emailManager.sendMail(member.getEmail(), "Testing", "Hi, " + member.getFullName() +
+                        "\n\nYour account has been successfully created.\n\nKind Regards,\nASD Gold Club System");
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
         }
         catch (Exception e){
