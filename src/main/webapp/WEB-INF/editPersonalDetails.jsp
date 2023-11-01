@@ -21,6 +21,10 @@
         <input id="submitForm" type="submit" value="Update Details">
     </div>
 </form>
+<form id="cancelMembershipForm" action="${pageContext.request.contextPath}/member/cancelMembership" method="post">
+    <input id="cancelMembership" type="submit" value="Cancel Membership">
+</form>
+
 
 </body>
 </html>

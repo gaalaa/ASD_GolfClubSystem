@@ -60,3 +60,22 @@ input[type="password"] {
 .submitForm:hover {
     background-color: #0056b3;
 }
+
+
+
+#cancelMembershipForm {
+    text-align: center;
+    margin-top: 20px;
+}
+#cancelMembership {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#cancelMembership:hover {
+    background-color: #d32f2f;
+}
