@@ -15,8 +15,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
-      text-align: center; /* Center-align the content horizontally */
+      text-align: center;
       font-family: Arial, sans-serif;
+      min-height: 100%;
+      margin: 0;
+      padding: 0;
     }
 
     header {
@@ -49,29 +52,85 @@
       margin: 10px 0;
     }
     .small-table {
-      font-size: 12px; /* Reduce the font size */
-      max-width: 300px; /* Set a max width */
-      margin: auto; /* This will center the table if its width is less than its container */
+      font-size: 16px;
+      max-width: 500px;
+      margin: auto;
     }
 
     .small-table th,
     .small-table td {
-      padding: 5px; /* Reduce padding */
+      padding: 5px;
     }
 
     .horizontal-columns {
       display: flex;
-      justify-content: space-between; /* This will give equal space between the h2 elements */
-      align-items: baseline; /* This will vertically align the h2 elements in case they have different heights */
-      max-width: 70%; /* adjust this value as needed */
+      justify-content: space-between;
+      align-items: baseline;
+      max-width: 70%;
       margin: 0 auto;
     }
 
-    .horizontal-columns > div img { /* This targets each div inside the horizontal-columns container */
-      flex: 1; /* This ensures each div takes equal width */
-      max-width: 100%; /* Ensures the image doesn't overflow its container */
-      display: block;  /* Makes the image a block element so it takes up the full width */
+    .horizontal-columns > div img {
+      flex: 1;
+      max-width: 100%;
+      display: block;
       margin: 0 auto 10px;
+    }
+
+    .banner {
+      width: 100%;
+      background-color: #8bd58b;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 30px;
+    }
+
+    .faq-section {
+      width: 70%;
+      margin: 50px auto;
+      font-family: Arial, sans-serif;
+    }
+
+    .faq-item {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .faq-item:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .faq-item summary {
+      background-color: #f7f7f7;
+      cursor: pointer;
+      padding: 10px 15px;
+      outline: none;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary:before {
+      content: '+';
+      display: inline-block;
+      width: 20px;
+      text-align: center;
+      margin-right: 10px;
+    }
+
+    .faq-item[open] summary:before {
+      content: '-';
+    }
+
+    .faq-answer {
+      padding: 10px 15px;
+      background-color: #fff;
+      border-top: 1px solid #ccc;
     }
 
   </style>
@@ -136,6 +195,60 @@
     </tbody>
   </table>
 </section>
+
+<div class="faq-section">
+  <h2>Common FAQs</h2>
+
+  <div class="faq-item">
+    <details>
+      <summary>What are the memberships available?</summary>
+      <div class="faq-answer">
+        We offer one membership tier that is free to join. The membership will grant you access to the Golf Club, Booking System Golf Shop and Restaurant.
+      </div>
+    </details>
+  </div>
+
+  <div class="faq-item">
+    <details>
+      <summary>Can I book a tee time online?</summary>
+      <div class="faq-answer">
+        Yes, members can book tee times through our online portal. If you're a visitor, please sign up online.
+      </div>
+    </details>
+  </div>
+
+  <div class="faq-item">
+    <details>
+      <summary>Do you offer golf lessons?</summary>
+      <div class="faq-answer">
+        We have a team of professional trainers offering both group and individual lessons.
+      </div>
+    </details>
+  </div>
+
+  <div class="faq-item">
+    <details>
+      <summary>Can children play on the course?</summary>
+      <div class="faq-answer">
+        Children are welcome; however, they must be accompanied by an adult at all times.
+      </div>
+    </details>
+  </div>
+
+  <div class="faq-item">
+    <details>
+      <summary>Is there any dress code?</summary>
+      <div class="faq-answer">
+        Yes, we maintain a strict dress code to ensure all members and visitors have a pleasant experience. We recommend golf attire such as buttoned shirts , golf shoes, and appropriate trousers or skirts.
+      </div>
+    </details>
+  </div>
+</div>
+
+<div class="banner">
+  PUT YOUR GOLFING EXPERIENCE FIRST
+  <p> Join today and let us show you what you're capacble of</p>
+</div>
 
 </body>
 </html>
