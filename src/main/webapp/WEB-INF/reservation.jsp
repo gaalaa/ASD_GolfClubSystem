@@ -23,35 +23,79 @@
         th {
             background-color: #f2f2f2;
         }
-        .popup {
+        .modal {
             display: none;
             position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 20px;
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            z-index: 1000;
-        }
-
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
+            z-index: 1;
             left: 0;
+            top: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 999;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
         }
 	</style>
 
 </head>
 <body>
+<div id="myModal" class="modal">
+	<div class="modal-content">
+		<span class="close">&times;</span>
+		<p id="modalText">Your reservation ID is: </p>
+	</div>
+</div>
+
+<%
+	Integer reservationId = (Integer) session.getAttribute("reservationId");
+	if (reservationId != null) {
+		session.removeAttribute("reservationId");
+%>
+<script>
+    window.onload = function() {
+        var modal = document.getElementById("myModal");
+        var span = document.getElementsByClassName("close")[0];
+        document.getElementById("modalText").innerHTML += "<b><%= reservationId %></b>";
+
+        modal.style.display = "block";
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    }
+</script>
+<%
+	}
+%>
+
 <%@ include file="jspf/header.jspf" %>
 <h1>Book Your Round!</h1>
-<form action="" method="post">
+<form action="ReservationServlet" method="post">
 	<table>
 		<tr>
 			<th><label for="Your Name">Name</label></th>
@@ -78,23 +122,8 @@
 			<td><textarea name="remarks" rows="4" id="Description"></textarea></td>
 		</tr>
 	</table>
-	<button onclick="showPopup()">Submit</button>
+	<input type="submit" class="btn btn-primary" value="Submit" />
+	<a href="EditReservationServlet" class="btn btn-primary">Edit Reservation</a>
 </form>
-<div class="overlay" id="overlay"></div>
-<div class="popup" id="popup">
-	<h3>Successful Booking!</h3>
-	<button onclick="closePopup()">Confirm</button>
-</div>
-<script>
-    function showPopup() {
-        document.getElementById('popup').style.display = 'block';
-        document.getElementById('overlay').style.display = 'block';
-    }
-
-    function closePopup() {
-        document.getElementById('popup').style.display = 'none';
-        document.getElementById('overlay').style.display = 'none';
-    }
-</script>
 </body>
 </html>
