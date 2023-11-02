@@ -1,5 +1,6 @@
 package com.golfclub.golfclubsystem.dataContext;
 
+import com.golfclub.golfclubsystem.models.Member;
 import com.golfclub.golfclubsystem.models.Menu;
 import kotlin.NotImplementedError;
 import org.jetbrains.annotations.NotNull;
@@ -58,22 +59,43 @@ public class MenuDao implements IDao<Menu> {
 
     @Override
     public Menu add(Menu entity) throws SQLException {
-        return null;
+        String query = "INSERT INTO Menu (menuName, menuPrice, menuDescription, isBeverage) VALUES (?, ?, ?, ?)";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, entity.getMenuName());
+            statement.setDouble(2, entity.getMenuPrice());
+            statement.setString(3, entity.getMenuDescription());
+            statement.setBoolean(4, entity.isBeverage());
+            statement.executeUpdate();
+        }
+        return entity;
     }
 
     @Override
-    public void update(Menu entity) {
-
+    public void update(Menu entity) throws SQLException {
+        try (PreparedStatement statement = connection.prepareStatement("UPDATE Menu SET menuName=?, menuPrice=?, menuDescription=?, isBeverage=? WHERE menuID=?")) {
+            statement.setString(1, entity.getMenuName());
+            statement.setDouble(2, entity.getMenuPrice());
+            statement.setString(3, entity.getMenuDescription());
+            statement.setBoolean(4, entity.isBeverage());
+            statement.setInt(5, entity.getMenuID());
+            statement.executeUpdate();
+        }
     }
 
     @Override
-    public boolean delete(@NotNull Menu entity) {
-        return false;
+    public boolean delete(@NotNull Menu entity) throws SQLException {
+        return delete(entity.getMenuID());
     }
 
     @Override
-    public boolean delete(int id) throws SQLException {
-        return false;
+    public boolean delete(int menuID) throws SQLException {
+        try (PreparedStatement statement = connection.prepareStatement("DELETE FROM Menu WHERE menuID = ?")) {
+            statement.setInt(1, menuID);
+            int result = statement.executeUpdate();
+
+            // Note(Pete): The delete should have removed 1 or 0 rows. If the result is 1, return true for success.
+            return result == 1;
+        }
     }
 
     @Override
