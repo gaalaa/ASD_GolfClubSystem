@@ -10,7 +10,7 @@ body {
     padding: 30px;
 }
 
-form {
+#detailsForm {
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -41,12 +41,12 @@ input[type="password"] {
     border-radius: 3px;
 }
 
-span {
+#passwordMatch {
     color: red;
     font-size: 14px;
 }
 
-input[type="submit"] {
+#submitForm {
     background-color: #007bff;
     color: #fff;
     padding: 10px 20px;
@@ -55,9 +55,27 @@ input[type="submit"] {
     cursor: pointer;
     margin: 0 auto;
 
-
 }
 
-input[type="submit"]:hover {
+.submitForm:hover {
     background-color: #0056b3;
+}
+
+
+
+#cancelMembershipForm {
+    text-align: center;
+    margin-top: 20px;
+}
+#cancelMembership {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#cancelMembership:hover {
+    background-color: #d32f2f;
 }

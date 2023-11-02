@@ -80,7 +80,7 @@
     <ul>
         <li>Email: golf@gmail.com</li>
         <li>Phone: 123 456 789</li>
-        <li>Address: 123 Golf, Course, Sydney 2000</li>
+        <li>Address: 81 Broadway, Ultimo NSW 2007 </li>
     </ul>
 
     <h2>Enquiry Form</h2>

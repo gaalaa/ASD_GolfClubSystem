@@ -33,6 +33,13 @@
             </li>
 
             <% } %>
+            <% if (currentUser != null && !currentUser.isAdmin()) { %>
+            <li>
+                <a href="${pageContext.request.contextPath}/member/editPersonalDetails" class="nav-link px-2 ${pageContext.request.requestURI eq '/WEB-INF/editPersonalDetails.jsp' ? 'link-secondary' : ''}">Personal Details</a>
+            </li>
+            <% } %>
+
+
         </ul>
 
         <div class="col-md-3 text-end">

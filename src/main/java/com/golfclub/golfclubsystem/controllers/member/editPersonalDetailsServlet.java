@@ -14,11 +14,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet("/member/userRegistration")
-public class userRegistrationServlet extends HttpServlet {
+@WebServlet("/member/editPersonalDetails")
+public class editPersonalDetailsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/userRegistration.jsp");
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/editPersonalDetails.jsp");
         dispatcher.forward(req, resp);
     }
 
@@ -26,35 +26,43 @@ public class userRegistrationServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String firstName = req.getParameter("firstName");
         String lastName = req.getParameter("lastName");
-        String email = req.getParameter("email");
-        String password = req.getParameter("password");
-        Member member = new Member();
-        member.setFirstName(firstName);
-        member.setLastName(lastName);
-        member.setEmail(email);
-        member.setPassword(password);
-        member.setAdmin(false);
-        req.getSession().setAttribute(Attributes.User, member);
-        try(MemberDao memberDao = new MemberDao()){
-            try{
-                memberDao.add(member);
-            }
-            catch (SQLException e){
-                System.out.println("An error occurred while trying to add the new member:\n" + e);
-            }
+        boolean updated = false;
+        Member member = (Member) req.getSession().getAttribute(Attributes.User);
+        if(!firstName.isEmpty() && !firstName.equals(member.getFirstName())){
+            member.setFirstName(firstName);
+            updated = true;
+        }
+        if(!lastName.isEmpty() && !lastName.equals(member.getLastName())){
+            member.setLastName(lastName);
+            updated = true;
+        }
+        if(updated){
+            //Add a pop-up box to say details updated before returning to main menu
             try {
                 EmailManager emailManager = new EmailManager();
                 emailManager.sendMail(member.getEmail(), "Testing", "Hi, " + member.getFullName() +
-                        "\n\nYour account has been successfully created.\n\nKind Regards,\nASD Gold Club System");
+                "\n\nYour details have been successfully updated.\n\nKind Regards,\nASD Gold Club System");
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-        }
-        catch (Exception e){
-            System.out.println("Error occurred creating memberDAO object: \n" + e);
+
+            req.getSession().setAttribute(Attributes.User, member);
+            try(MemberDao memberDao = new MemberDao()){
+                try{
+                    memberDao.update(member);
+                }
+                catch (SQLException e){
+                    System.out.println("An error occurred while trying to update the member:\n" + e);
+                }
+            }
+            catch (Exception e){
+                System.out.println("Error occurred creating memberDAO object: \n" + e);
+            }
+
         }
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/homepage.jsp");
         dispatcher.forward(req, resp);
+
     }
 
 }

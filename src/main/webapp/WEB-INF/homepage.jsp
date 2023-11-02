@@ -27,7 +27,6 @@
       font-size: 36px;
     }
 
-    /* Additional elements that might go on a homepage */
     section {
       margin: 20px;
     }
@@ -37,7 +36,8 @@
     }
 
     p {
-      font-size: 18px;
+      font-size: 14px;
+      margin-right: 40px;
     }
 
     ul {
@@ -48,20 +48,93 @@
     li {
       margin: 10px 0;
     }
+    .small-table {
+      font-size: 12px; /* Reduce the font size */
+      max-width: 300px; /* Set a max width */
+      margin: auto; /* This will center the table if its width is less than its container */
+    }
+
+    .small-table th,
+    .small-table td {
+      padding: 5px; /* Reduce padding */
+    }
+
+    .horizontal-columns {
+      display: flex;
+      justify-content: space-between; /* This will give equal space between the h2 elements */
+      align-items: baseline; /* This will vertically align the h2 elements in case they have different heights */
+      max-width: 70%; /* adjust this value as needed */
+      margin: 0 auto;
+    }
+
+    .horizontal-columns > div img { /* This targets each div inside the horizontal-columns container */
+      flex: 1; /* This ensures each div takes equal width */
+      max-width: 100%; /* Ensures the image doesn't overflow its container */
+      display: block;  /* Makes the image a block element so it takes up the full width */
+      margin: 0 auto 10px;
+    }
+
   </style>
   <meta charset="UTF-8">
   <title>Golf Course Booking System</title>
 </head>
 <body>
 <%@ include file="jspf/header.jspf" %>
-<header>
-  <h1>Welcome to the Golf Course Booking System</h1>
-</header>
 
 <section>
-  <h2>To book a course</h2>
-  <p>Please sign in or sign up</p>
-  <img src="${pageContext.request.contextPath}/img/homepagegolf.png" alt="Booking Image" width="300">
+  <img src="${pageContext.request.contextPath}/img/golfhome.jpg" alt="Booking Image" width="1400">
+</section>
+
+<header>
+  <h1>EXPLORE ASD GOLF CLUB</h1>
+</header>
+
+<div class="horizontal-columns">
+  <div>
+    <img src="${pageContext.request.contextPath}/img/homepagegolf.png" alt="Driving Range" width="300">
+    <h2>Download the ASD App </h2>
+    <p>Discover in-depth programs and on demand group exercises to help you stay motivated and feel confident in your golfing journey. Work your way to a stronger drive, as you generate power through from your stance through your legs into your swing.</p>
+  </div>
+  <div>
+    <img src="${pageContext.request.contextPath}/img/golf.jpeg" alt="Driving Range" width="300" height="200">
+    <h2>Updated Driving Range</h2>
+    <p>Try the newly renovated Driving Range, our custom-built facility features state-of-the-art equipment. Automated Golf Ball Teeing Systems take the hassle off setting up the perfect shot in no time. So you can focus on perfecting your swing. </p>
+  </div>
+  <div>
+    <img src="${pageContext.request.contextPath}/img/golftraining.jpeg" alt="Driving Range" width="300" height="200">
+    <h2>Small Group Training </h2>
+    <p>Push yourself further with small group training, led by our dedicated Trainers. These 30-minute classes, strike the perfect balance of technique and power, along with the motivation of training in a group, you can stay committed to your golfing goals.</p>
+  </div>
+</div>
+
+<section>
+  <h2>Operating Hours</h2>
+  <table class="table table-bordered small-table">
+    <thead>
+    <tr>
+      <th>Day</th>
+      <th>Opening Time</th>
+      <th>Closing Time</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>Monday - Thursday</td>
+      <td>6:00 AM</td>
+      <td>8:00 PM</td>
+    </tr>
+    <tr>
+      <td>Friday</td>
+      <td>6:00 AM</td>
+      <td>6:00 PM</td>
+    </tr>
+    <tr>
+      <td>Saturday - Sunday</td>
+      <td>6:00 AM</td>
+      <td>5:00 PM</td>
+    </tr>
+    </tbody>
+  </table>
 </section>
 
 </body>
