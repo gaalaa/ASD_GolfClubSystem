@@ -102,7 +102,8 @@ class DBManager : ServletContextListener {
                 isAdmin INTEGER NOT NULL
             );
             INSERT INTO Member (firstName, lastName, email, password, isAdmin)
-            VALUES ('Admin', 'User', 'admin@golfclub.com', '1234', 1)
+            VALUES ('Admin', 'User', 'admin@golfclub.com', '1234', 1),
+            ('Test','User','test@golfclub.com','1234',0)
         """.trimIndent())
         }
     }

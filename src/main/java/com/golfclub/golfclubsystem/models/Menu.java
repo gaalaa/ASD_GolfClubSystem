@@ -8,7 +8,7 @@ public class Menu {
 
     private Boolean isBeverage;
 
-public Menu() {}
+public Menu(int menuID, String menuName, double menuPrice, String menuDescription) {}
 
 public Menu(int menuID, String menuName, double menuPrice, String menuDescription, Boolean isBeverage) {
     this.menuID = menuID;
