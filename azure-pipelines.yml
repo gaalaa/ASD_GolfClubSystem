@@ -39,3 +39,8 @@ steps:
     publishJUnitResults: false
     goals: 'package'
 
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'build'
+    publishLocation: 'Container'
