@@ -185,7 +185,6 @@ class DBManager : ServletContextListener {
                 email TEXT NOT NULL,
                 message TEXT NOT NULL
             );
-            INSERT INTO ContactEnquiries (name, email, message) 
         """.trimIndent())
         }
     }
