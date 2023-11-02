@@ -146,7 +146,7 @@
                             <div>
                                 <div class="col form-floating mb-3">
                                     <input type="text" class="form-control" name="menuBeverage" id="menuBeverage-edit" placeholder=" "/>
-                                    <label for="menuBeverage-edit">Is it Beverage?</label>
+                                    <label for="menuBeverage-edit">Is it Beverage? (true/false)</label>
                                 </div>
                             </div>
                         </div>
