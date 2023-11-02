@@ -47,7 +47,7 @@
             <h3>Total: $</h3>
             <h3 id="total"><%= cart.totalAmount() %></h3>
         </div>
-        <a class="btn btn-primary mt-2">Continue to Checkout</a>
+        <a href="${pageContext.request.contextPath}/store/checkout" class="btn btn-primary mt-2">Continue to Checkout</a>
     <% } %>
 </div>
 </body>

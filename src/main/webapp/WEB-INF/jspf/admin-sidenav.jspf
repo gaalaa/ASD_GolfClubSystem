@@ -10,7 +10,7 @@
             <a href="${pageContext.request.contextPath}/admin" class="nav-link px-2 ${pageContext.request.requestURI eq '/WEB-INF/admin-dashboard-members.jsp' ? 'link-secondary' : ''}">Members</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link">Products</a>
+            <a href="${pageContext.request.contextPath}/admin/products" class="nav-link px-2 ${pageContext.request.requestURI eq '/WEB-INF/admin-dashboard-products.jsp' ? 'link-secondary' : ''}">Products</a>
         </li>
         <li class="nav-item">
             <a href="${pageContext.request.contextPath}/adminMenu-servlet" class="nav-link px-2 ${pageContext.request.requestURI eq '/WEB-INF/admin-dashboard-menus.jsp' ? 'link-secondary' : ''}">Menus</a>

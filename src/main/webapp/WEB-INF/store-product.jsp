@@ -29,7 +29,7 @@
 <div class="container">
     <a href="${pageContext.request.contextPath}/store" style="text-decoration: none; top: -25px; position: relative;"> < Back to store</a>
     <div class="d-flex ms-4">
-        <img class="product-img" src="<%= product.getImageUri() != null
+        <img class="product-img" src="${pageContext.request.contextPath}/<%= product.getImageUri() != null
                 ?  product.getImageUri()
                 : "/img/products/placeholder.png"%>"
              alt="Product Image">
