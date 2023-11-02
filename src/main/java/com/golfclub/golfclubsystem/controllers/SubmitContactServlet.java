@@ -14,7 +14,7 @@ import java.io.IOException;
 public class SubmitContactServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
         String email = req.getParameter("email");
         String message = req.getParameter("message");
@@ -24,8 +24,7 @@ public class SubmitContactServlet extends HttpServlet {
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/submitContact.jsp");
         dispatcher.forward(req, resp);
     }
-
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     }
 }

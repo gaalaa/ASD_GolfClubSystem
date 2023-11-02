@@ -150,7 +150,7 @@
 
 <div class="horizontal-columns">
   <div>
-    <img src="${pageContext.request.contextPath}/img/homepagegolf.png" alt="Driving Range" width="300">
+    <img src="${pageContext.request.contextPath}/img/homepagegolf.png" alt="app" width="300">
     <h2>Download the ASD App </h2>
     <p>Discover in-depth programs and on demand group exercises to help you stay motivated and feel confident in your golfing journey. Work your way to a stronger drive, as you generate power through from your stance through your legs into your swing.</p>
   </div>
@@ -160,7 +160,7 @@
     <p>Try the newly renovated Driving Range, our custom-built facility features state-of-the-art equipment. Automated Golf Ball Teeing Systems take the hassle off setting up the perfect shot in no time. So you can focus on perfecting your swing. </p>
   </div>
   <div>
-    <img src="${pageContext.request.contextPath}/img/golftraining.jpeg" alt="Driving Range" width="300" height="200">
+    <img src="${pageContext.request.contextPath}/img/golftraining.jpeg" alt="training" width="300" height="200">
     <h2>Small Group Training </h2>
     <p>Push yourself further with small group training, led by our dedicated Trainers. These 30-minute classes, strike the perfect balance of technique and power, along with the motivation of training in a group, you can stay committed to your golfing goals.</p>
   </div>
@@ -247,7 +247,7 @@
 
 <div class="banner">
   PUT YOUR GOLFING EXPERIENCE FIRST
-  <p> Join today and let us show you what you're capacble of</p>
+  <p> Join today and let us show you what you're capable of</p>
 </div>
 
 </body>

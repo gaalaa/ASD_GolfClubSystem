@@ -75,16 +75,15 @@
     <header>
         <h1>Contact Us</h1>
     </header>
-    <h2>Contact Information</h2>
     <p>If you have any questions or feedback, please feel free to contact us:</p>
     <ul>
-        <li>Email: golf@gmail.com</li>
+        <li>Email: ASD@golf.com</li>
         <li>Phone: 123 456 789</li>
         <li>Address: 81 Broadway, Ultimo NSW 2007 </li>
     </ul>
 
     <h2>Enquiry Form</h2>
-    <form action=${pageContext.request.contextPath}/"SubmitContactServlet" method="get">
+    <form action="${pageContext.request.contextPath}/SubmitContactServlet" method="post">
         <label for="name">Name:</label>
         <input type="text" name="name" id="name" required style="width: 300px; height: 20px;"><br>
         <label for="email">Email:</label>
@@ -93,7 +92,6 @@
         <textarea name="message" id="message" rows="5" required style="width: 300px; height: 150px;"></textarea><br>
         <input type="submit" value="Submit">
     </form>
-
 </section>
 </body>
 </html>
