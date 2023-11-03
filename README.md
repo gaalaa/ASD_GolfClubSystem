@@ -31,6 +31,9 @@ mvn test
 - login.css
 - userRegistration.css
 - MemberDaoTest.kt
+- editPersonalDetailsServlet
+- cancelMembershipServlet
+- EmailManager (Could only get it sending emails from authorized devices. Calls to it have been commented out to allows use of website without error)
 
 ### Peter
 - AdminAddMemberServlet
