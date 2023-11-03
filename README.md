@@ -45,3 +45,11 @@ mvn test
 - Attributes
 - MemberDaoTest
 - MockDBManager
+
+### Jiale(Gala)
+- reservation.jsp
+- editreservation.jsp
+- ReservationServlet
+- EditreservationServlet
+- ReservationDao
+- Reservation.java
