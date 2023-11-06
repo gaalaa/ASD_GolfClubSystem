@@ -37,14 +37,13 @@ public class editPersonalDetailsServlet extends HttpServlet {
             updated = true;
         }
         if(updated){
-            //Add a pop-up box to say details updated before returning to main menu
-            try {
-                EmailManager emailManager = new EmailManager();
-                emailManager.sendMail(member.getEmail(), "Testing", "Hi, " + member.getFullName() +
-                "\n\nYour details have been successfully updated.\n\nKind Regards,\nASD Gold Club System");
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+//            try {
+//                EmailManager emailManager = new EmailManager();
+//                emailManager.sendMail(member.getEmail(), "Testing", "Hi, " + member.getFullName() +
+//                "\n\nYour details have been successfully updated.\n\nKind Regards,\nASD Gold Club System");
+//            } catch (Exception e) {
+//                throw new RuntimeException(e);
+//            }
 
             req.getSession().setAttribute(Attributes.User, member);
             try(MemberDao memberDao = new MemberDao()){

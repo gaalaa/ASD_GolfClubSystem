@@ -26,13 +26,13 @@ public class CancelMembershipServlet extends HttpServlet {
                 System.out.println(e);
             }
 
-            try{
-                EmailManager emailManager = new EmailManager();
-                emailManager.sendMail(user.getEmail(), "Membership Cancellation", "Dear " + user.getFullName()
-                        + "\n\nYour Membership has been cancelled. \n\nKind Regards,\nASD Gold Club System");
-            } catch (Exception e){
-                System.out.println(e);
-            }
+//            try{
+//                EmailManager emailManager = new EmailManager();
+//                emailManager.sendMail(user.getEmail(), "Membership Cancellation", "Dear " + user.getFullName()
+//                        + "\n\nYour Membership has been cancelled. \n\nKind Regards,\nASD Gold Club System");
+//            } catch (Exception e){
+//                System.out.println(e);
+//            }
 
             req.getSession().removeAttribute(Attributes.User);
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/homepage.jsp");

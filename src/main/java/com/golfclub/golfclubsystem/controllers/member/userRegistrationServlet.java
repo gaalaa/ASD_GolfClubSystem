@@ -42,13 +42,13 @@ public class userRegistrationServlet extends HttpServlet {
             catch (SQLException e){
                 System.out.println("An error occurred while trying to add the new member:\n" + e);
             }
-            try {
-                EmailManager emailManager = new EmailManager();
-                emailManager.sendMail(member.getEmail(), "Testing", "Hi, " + member.getFullName() +
-                        "\n\nYour account has been successfully created.\n\nKind Regards,\nASD Gold Club System");
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+//            try {
+//                EmailManager emailManager = new EmailManager();
+//                emailManager.sendMail(member.getEmail(), "Testing", "Hi, " + member.getFullName() +
+//                        "\n\nYour account has been successfully created.\n\nKind Regards,\nASD Gold Club System");
+//            } catch (Exception e) {
+//                throw new RuntimeException(e);
+//            }
         }
         catch (Exception e){
             System.out.println("Error occurred creating memberDAO object: \n" + e);
